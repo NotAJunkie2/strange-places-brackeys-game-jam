@@ -14,6 +14,19 @@ config/name="strange-places"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Enums="*uid://bu4rh5inij2ml"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "purple",
+"res://resources/": "yellow",
+"res://scenes/": "pink",
+"res://scripts/": "blue"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

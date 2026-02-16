@@ -1,0 +1,4 @@
+extends Node
+
+enum PizzaType {PEPPERONI, MARGHERITA, NEAPOLITAN, HAWAIIAN}
+enum PizzaModifier { FRAGILE, UNSTABLE, UMBRAL, SUCCULENT }
