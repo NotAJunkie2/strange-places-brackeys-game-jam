@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://by2x7x3xtay5h"]
+
+[ext_resource type="PackedScene" uid="uid://ci634a81104i6" path="res://scene/character.tscn" id="1_char"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1200, 40)
+
+[node name="Playground" type="Node2D" unique_id=1724821274]
+
+[node name="Character" parent="." unique_id=1399939567 instance=ExtResource("1_char")]
+position = Vector2(0, -100)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=2132535159]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorSprite" type="ColorRect" parent="Floor" unique_id=635742127]
+offset_left = -600.0
+offset_top = -20.0
+offset_right = 600.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
