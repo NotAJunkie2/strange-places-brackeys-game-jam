@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Enums="*uid://bu4rh5inij2ml"
+WorldState="*uid://1x4hamfopkea"
 
 [file_customization]
 
