@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ci634a81104i6"]
+
+[ext_resource type="Script" uid="uid://cpd6op4h6f642" path="res://scripts/Character.gd" id="1_char"]
+[ext_resource type="Texture2D" uid="uid://cd12fmbb4c72c" path="res://assets/Idle.png" id="2_p3t0x"]
+[ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="2_sm"]
+[ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
+[ext_resource type="Script" uid="uid://c4bvu8fbala1v" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
+[ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_char"]
+size = Vector2(48, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_prompt"]
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Character" type="CharacterBody2D" unique_id=77527563]
+collision_mask = 4
+script = ExtResource("1_char")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
+shape = SubResource("RectangleShape2D_char")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1770370944]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=453994451]
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2016254237]
+texture = ExtResource("2_p3t0x")
+region_enabled = true
+region_rect = Rect2(1.755, 58.5, 61.245, 71)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1713370691]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2099376179]
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+
+[node name="InteractLabel" type="Label" parent="." unique_id=229451085]
+offset_left = -43.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = -32.0
+text = "E to hide"
+label_settings = SubResource("LabelSettings_prompt")
+horizontal_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." unique_id=850235556]
+script = ExtResource("2_sm")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=652028777]
+script = ExtResource("4_idle")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1221849434]
+script = ExtResource("3_walk")
+
+[node name="Hide" type="Node" parent="StateMachine" unique_id=1353850808]
+script = ExtResource("6_hidden")
