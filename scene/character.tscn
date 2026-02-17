@@ -64,5 +64,5 @@ script = ExtResource("4_idle")
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1221849434]
 script = ExtResource("3_walk")
 
-[node name="Hidden" type="Node" parent="StateMachine" unique_id=1353850808]
+[node name="Hide" type="Node" parent="StateMachine" unique_id=1353850808]
 script = ExtResource("6_hidden")
