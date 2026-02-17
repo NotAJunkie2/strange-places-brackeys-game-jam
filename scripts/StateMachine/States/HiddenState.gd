@@ -1,15 +1,13 @@
-class_name IdleState extends State
+class_name HiddenState extends State
 
 @onready var character: Character = owner
 
 
 func enter(_previous: State) -> void:
 	character.velocity = Vector2.ZERO
-
-
-func process_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and character.can_hide:
-		transition_sg.emit("Hidden")
+	character.modulate.a = 0.3
+	# Remove from player layer so enemies can't detect us MAYBE CHANGE TODO
+	character.set_collision_layer_value(1, false)
 
 
 func process_physics(_delta: float) -> void:
@@ -17,6 +15,10 @@ func process_physics(_delta: float) -> void:
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")
 	)
-
 	if direction != Vector2.ZERO:
-		transition_sg.emit("Walk")
+		transition_sg.emit("Idle")
+
+
+func exit() -> void:
+	character.modulate.a = 1.0
+	character.set_collision_layer_value(1, true)
