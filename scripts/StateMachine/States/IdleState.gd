@@ -1,6 +1,10 @@
-class_name WalkState extends State
+class_name IdleState extends State
 
 @onready var character: Character = owner
+
+
+func enter(_previous: State) -> void:
+	character.velocity = Vector2.ZERO
 
 
 func process_physics(_delta: float) -> void:
@@ -9,9 +13,5 @@ func process_physics(_delta: float) -> void:
 		Input.get_axis("move_up", "move_down")
 	)
 
-	if direction == Vector2.ZERO:
-		transition_sg.emit("Idle")
-		return
-
-	character.velocity = direction.normalized() * character.speed
-	character.move_and_slide()
+	if direction != Vector2.ZERO:
+		transition_sg.emit("Walk")

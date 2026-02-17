@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cd12fmbb4c72c" path="res://assets/Idle.png" id="2_p3t0x"]
 [ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="2_sm"]
 [ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
-[ext_resource type="Script" uid="uid://1dtfrs7unl64" path="res://scripts/StateMachine/States/JumpState.gd" id="4_jump"]
-[ext_resource type="Script" uid="uid://ckfsttchx0gdb" path="res://scripts/StateMachine/States/FallState.gd" id="5_fall"]
+[ext_resource type="Script" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_char"]
 size = Vector2(48, 64)
@@ -30,13 +29,10 @@ visible = false
 
 [node name="StateMachine" type="Node" parent="." unique_id=850235556]
 script = ExtResource("2_sm")
-initial_state = NodePath("Walk")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_idle")
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1221849434]
 script = ExtResource("3_walk")
-
-[node name="Jump" type="Node" parent="StateMachine" unique_id=1811769897]
-script = ExtResource("4_jump")
-
-[node name="Fall" type="Node" parent="StateMachine" unique_id=771072082]
-script = ExtResource("5_fall")
