@@ -42,6 +42,9 @@ color = Color(0.4, 0.4, 0.4, 1)
 [node name="Bush" parent="." unique_id=679312658 instance=ExtResource("2_clejj")]
 position = Vector2(200, 0)
 
+[node name="PizzaPlace" parent="." unique_id=84024637 instance=ExtResource("3_2ob5w")]
+position = Vector2(-662, -398)
+
 [node name="OrderDeliveryPlace" type="Area2D" parent="." unique_id=1349557474]
 position = Vector2(978, -392)
 collision_layer = 8
@@ -56,6 +59,3 @@ shape = SubResource("RectangleShape2D_jt31o")
 position = Vector2(0, 101)
 scale = Vector2(8.9375, 8.9375)
 texture = SubResource("GradientTexture2D_m43lc")
-
-[node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
-position = Vector2(-901, -486)

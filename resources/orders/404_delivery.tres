@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://djmox45in0ywx"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_i8d4w"]
+
+[resource]
+script = ExtResource("1_i8d4w")
+address = "404 Not_Found Road"
+description = "Client wants the thin crust pizza! Be careful!
+
+Client note:
+Bzzzt I need my pizza... static... please don't drop it or let the Runners touch it..."
+client = "Tom Bug"
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

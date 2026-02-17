@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bpbnwisg6045y"]
+
+[ext_resource type="Script" uid="uid://crk6asxlf7ll0" path="res://scripts/Interactables/hiding_spot.gd" id="1_qxmu4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bush"]
+radius = 40.0
+
+[node name="Bush" type="Node2D" unique_id=679312658]
+
+[node name="Sprite" type="ColorRect" parent="." unique_id=975785211]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.2, 0.55, 0.2, 1)
+
+[node name="HidingSpot" type="Area2D" parent="." unique_id=1149438930]
+collision_layer = 8
+script = ExtResource("1_qxmu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingSpot" unique_id=1166663908]
+shape = SubResource("CircleShape2D_bush")

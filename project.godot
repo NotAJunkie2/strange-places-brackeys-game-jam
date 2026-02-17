@@ -15,6 +15,12 @@ run/main_scene="uid://by2x7x3xtay5h"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Enums="*uid://bu4rh5inij2ml"
+WorldState="*uid://1x4hamfopkea"
+DeliveryManager="*uid://2jhmuvrahsij"
+
 [file_customization]
 
 folder_colors={
@@ -22,6 +28,10 @@ folder_colors={
 "res://scene/": "blue",
 "res://scripts/": "red"
 }
+
+[global_group]
+
+character="player \\_(o_o)_/"
 
 [input]
 
@@ -61,11 +71,6 @@ interact={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Map"
 2d_physics/layer_4="Interactables"
-
-[autoload]
-
-Enums="*uid://bu4rh5inij2ml"
-WorldState="*uid://1x4hamfopkea"
 
 [physics]
 

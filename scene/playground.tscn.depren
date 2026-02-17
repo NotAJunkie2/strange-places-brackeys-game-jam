@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpbnwisg6045y" path="res://scene/bush.tscn" id="2_clejj"]
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
 [ext_resource type="Script" uid="uid://cxn4up00321cb" path="res://scripts/Interactables/delivery_zone.gd" id="4_c13q2"]
+[ext_resource type="Script" uid="uid://c64hjq5tsbwsq" path="res://scene/delivery_zone.gd" id="8_m43lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1200, 40)
@@ -42,6 +43,9 @@ color = Color(0.4, 0.4, 0.4, 1)
 [node name="Bush" parent="." unique_id=679312658 instance=ExtResource("2_clejj")]
 position = Vector2(200, 0)
 
+[node name="PizzaPlace" parent="." unique_id=84024637 instance=ExtResource("3_2ob5w")]
+position = Vector2(-662, -398)
+
 [node name="OrderDeliveryPlace" type="Area2D" parent="." unique_id=1349557474]
 position = Vector2(978, -392)
 collision_layer = 8
@@ -57,5 +61,6 @@ position = Vector2(0, 101)
 scale = Vector2(8.9375, 8.9375)
 texture = SubResource("GradientTexture2D_m43lc")
 
-[node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
-position = Vector2(-901, -486)
+[node name="DeliveryZone" type="Node2D" parent="." unique_id=1484856792]
+position = Vector2(978, -392)
+script = ExtResource("8_m43lc")

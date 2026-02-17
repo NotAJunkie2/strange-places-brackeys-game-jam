@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dowf5y8o6vv8o"]
+
+[ext_resource type="Texture2D" uid="uid://c6wh584u5utep" path="res://assets/world/basic/pizza_place.png" id="1_hw4n0"]
+[ext_resource type="Script" uid="uid://fcxcdjg40n4f" path="res://scripts/Interactables/pickup_order.gd" id="2_twixt"]
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="3_xlhg3"]
+[ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/tutorial_order.tres" id="4_2tc34"]
+[ext_resource type="Resource" uid="uid://djmox45in0ywx" path="res://resources/orders/404_delivery.tres" id="5_ouw63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhxy7"]
+size = Vector2(775, 294)
+
+[node name="PizzaPlace" type="Area2D" unique_id=1602411763]
+collision_layer = 8
+script = ExtResource("2_twixt")
+deliveries = Array[ExtResource("3_xlhg3")]([ExtResource("4_2tc34"), ExtResource("5_ouw63")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=533023959]
+texture = ExtResource("1_hw4n0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1313314851]
+position = Vector2(17.5, 304)
+shape = SubResource("RectangleShape2D_yhxy7")

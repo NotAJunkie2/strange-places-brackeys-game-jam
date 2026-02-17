@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://by2x7x3xtay5h"]
+
+[ext_resource type="PackedScene" uid="uid://ci634a81104i6" path="res://scene/character.tscn" id="1_char"]
+[ext_resource type="Script" uid="uid://crk6asxlf7ll0" path="res://scripts/Interactables/hiding_spot.gd" id="2_ssnbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1200, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bush"]
+radius = 40.0
+
+[node name="Playground" type="Node2D" unique_id=1724821274]
+
+[node name="Character" parent="." unique_id=1399939567 instance=ExtResource("1_char")]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=2132535159]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorSprite" type="ColorRect" parent="Floor" unique_id=635742127]
+offset_left = -600.0
+offset_top = -20.0
+offset_right = 600.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="Bush" type="Node2D" parent="." unique_id=311374971]
+position = Vector2(200, 0)
+
+[node name="Sprite" type="ColorRect" parent="Bush" unique_id=2064607288]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.2, 0.55, 0.2, 1)
+
+[node name="HidingSpot" type="Area2D" parent="Bush" unique_id=1430310076]
+collision_layer = 8
+script = ExtResource("2_ssnbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bush/HidingSpot" unique_id=940742588]
+shape = SubResource("CircleShape2D_bush")

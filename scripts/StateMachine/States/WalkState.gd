@@ -4,9 +4,7 @@ class_name WalkState extends State
 
 
 func process_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and character.can_hide:
-		transition_sg.emit("Hidden")
-
+	pass
 
 func process_physics(_delta: float) -> void:
 	var direction := Vector2(
