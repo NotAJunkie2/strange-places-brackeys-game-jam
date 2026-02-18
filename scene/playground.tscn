@@ -9,8 +9,13 @@
 size = Vector2(1200, 40)
 
 [node name="Playground" type="Node2D" unique_id=1724821274]
+y_sort_enabled = true
 
 [node name="Character" parent="." unique_id=1399939567 instance=ExtResource("1_char")]
+z_index = 0
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(-16, 27)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
 position = Vector2(0, 200)
@@ -32,4 +37,6 @@ position = Vector2(200, 0)
 position = Vector2(1709, -953)
 
 [node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-901, -486)

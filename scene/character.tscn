@@ -19,6 +19,9 @@ font_size = 20
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3t0x"]
+size = Vector2(102, 74)
+
 [node name="Character" type="CharacterBody2D" unique_id=77527563 groups=["character"]]
 z_index = 5
 collision_mask = 4
@@ -34,6 +37,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=453994451]
+z_as_relative = false
 shape = SubResource("CircleShape2D_interact")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2016254237]
@@ -69,3 +73,12 @@ script = ExtResource("3_walk")
 
 [node name="Hide" type="Node" parent="StateMachine" unique_id=1353850808]
 script = ExtResource("6_hidden")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1327729244]
+collision_mask = 14
+collision_priority = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=197441367]
+z_as_relative = false
+position = Vector2(29, 103)
+shape = SubResource("RectangleShape2D_p3t0x")
