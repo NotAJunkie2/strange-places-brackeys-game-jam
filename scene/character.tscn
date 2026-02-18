@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ci634a81104i6"]
 
-[ext_resource type="Script" uid="uid://cpd6op4h6f642" path="res://scripts/character.gd" id="1_char"]
+[ext_resource type="Script" uid="uid://cpd6op4h6f642" path="res://scripts/Character.gd" id="1_char"]
 [ext_resource type="Texture2D" uid="uid://ynpvc71jy1ev" path="res://assets/character/idle/Pizza guy Idle_01.png" id="2_p3t0x"]
 [ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="2_sm"]
 [ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
@@ -45,8 +45,9 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2099376179]
 zoom = Vector2(0.8, 0.8)
+process_callback = 0
 position_smoothing_enabled = true
-position_smoothing_speed = 80.0
+position_smoothing_speed = 12.0
 
 [node name="InteractLabel" type="Label" parent="." unique_id=229451085]
 offset_left = -162.0

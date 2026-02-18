@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://2twkn17he00k"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_i2asj"]
+
+[resource]
+script = ExtResource("1_i2asj")
+address = "404 N0t_Found $t"
+briefing = "The aroma is leaking through the box. It's attracting the Stalkers. Hide, run, and DON'T let them get the pizza!
+
+And remember, RESIST THE URGE TO EAT IT YOURSELF!!!"
+client = "Glitcher 217"
+modifier = Array[int]([3, 0])
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

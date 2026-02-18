@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://dy7fq8vq6ssgy"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_dlt6w"]
+
+[resource]
+script = ExtResource("1_dlt6w")
+address = "PizzaPlazza HQ"
+briefing = "This is it. The Ultimate Order. It's ticking, it's delicious, and everyone wants it. Bring it home.
+
+Move fast, Delivery Boy..."
+client = "Chill Joe"
+modifier = Array[int]([1, 3, 0])
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

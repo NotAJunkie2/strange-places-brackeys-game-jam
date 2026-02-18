@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://dunogcppjq0s"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_wtdg3"]
+
+[resource]
+script = ExtResource("1_wtdg3")
+address = "Magma Falls"
+briefing = "Visibility is zero. Careful, we they say there's  a risk of rain there...
+
+Can it REALLY rain in hell though?"
+client = "Beelzebub"
+pizza_type = 1
+modifier = Array[int]([2])
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

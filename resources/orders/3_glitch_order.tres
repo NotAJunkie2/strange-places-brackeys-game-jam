@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://djmox45in0ywx"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_ee4uf"]
+
+[resource]
+script = ExtResource("1_ee4uf")
+address = "404 N0t_Found $t"
+briefing = "Reality is thin there, and so IS OUR DELICIOUS PIZZA CRUST! Don't disappoint us, Delivery Boy..."
+client = "User_404"
+modifier = Array[int]([1])
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"
