@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://dht3y3tqhmkr2"]
+
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_873d6"]
+
+[resource]
+script = ExtResource("1_873d6")
+address = "666 Umbral Planes"
+briefing = "Can you beleive it? Another order from the pit!
+
+And the guy needs something *very particular*and he wants it FAST!
+
+Eghhhh.. this sick bastard!"
+client = "The Icon of Sin"
+pizza_type = 3
+modifier = Array[int]([1])
+metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

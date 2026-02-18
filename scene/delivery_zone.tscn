@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://de4w0b5fijltx"]
+
+[ext_resource type="Script" uid="uid://cxn4up00321cb" path="res://scripts/Interactables/delivery_zone.gd" id="1_2cpi1"]
+[ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/1_tutorial_order.tres" id="2_et7bk"]
+[ext_resource type="Texture2D" uid="uid://byavbkbfbs7j0" path="res://assets/world/basic/Flower_Shop.png" id="3_kwr2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt31o"]
+size = Vector2(1216, 524)
+
+[node name="DeliveryZone_Chill Joe" type="Area2D" unique_id=1471768026]
+collision_layer = 8
+script = ExtResource("1_2cpi1")
+delivery_order = ExtResource("2_et7bk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071667190]
+position = Vector2(0, 304)
+shape = SubResource("RectangleShape2D_jt31o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=828821550]
+position = Vector2(0, 100)
+texture = ExtResource("3_kwr2t")

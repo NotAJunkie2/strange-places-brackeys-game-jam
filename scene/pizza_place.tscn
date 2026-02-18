@@ -2,9 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c6wh584u5utep" path="res://assets/world/basic/pizza_place.png" id="1_hw4n0"]
 [ext_resource type="Script" uid="uid://fcxcdjg40n4f" path="res://scripts/Interactables/pickup_order.gd" id="2_twixt"]
+[ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/1_tutorial_order.tres" id="3_4l76e"]
 [ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="3_xlhg3"]
-[ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/tutorial_order.tres" id="4_2tc34"]
-[ext_resource type="Resource" uid="uid://djmox45in0ywx" path="res://resources/orders/404_delivery.tres" id="5_ouw63"]
+[ext_resource type="Resource" uid="uid://q4t5c0fatjuy" path="res://resources/orders/2_tutorial_order_cats.tres" id="4_puavp"]
+[ext_resource type="Resource" uid="uid://djmox45in0ywx" path="res://resources/orders/3_glitch_order.tres" id="5_6vmy4"]
+[ext_resource type="Resource" uid="uid://2twkn17he00k" path="res://resources/orders/4_glitch_order_stalkers.tres" id="6_wbiuy"]
+[ext_resource type="Resource" uid="uid://dunogcppjq0s" path="res://resources/orders/5_hell_order_dark.tres" id="7_lw0px"]
+[ext_resource type="Resource" uid="uid://dht3y3tqhmkr2" path="res://resources/orders/6_hell_order_speed.tres" id="8_vy7nu"]
+[ext_resource type="Resource" uid="uid://dy7fq8vq6ssgy" path="res://resources/orders/7_hq_order_final.tres" id="9_jy2i8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhxy7"]
 size = Vector2(775, 294)
@@ -12,7 +17,7 @@ size = Vector2(775, 294)
 [node name="PizzaPlace" type="Area2D" unique_id=1602411763]
 collision_layer = 8
 script = ExtResource("2_twixt")
-deliveries = Array[ExtResource("3_xlhg3")]([ExtResource("4_2tc34"), ExtResource("5_ouw63")])
+all_deliveries = Array[ExtResource("3_xlhg3")]([ExtResource("3_4l76e"), ExtResource("4_puavp"), ExtResource("5_6vmy4"), ExtResource("6_wbiuy"), ExtResource("7_lw0px"), ExtResource("8_vy7nu"), ExtResource("9_jy2i8")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=533023959]
 texture = ExtResource("1_hw4n0")

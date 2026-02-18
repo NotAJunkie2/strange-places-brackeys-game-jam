@@ -1,7 +1,6 @@
 extends GenericInteractible
 
-@export var deliveries: Array[DeliveryData] # Drag your 5 .tres files here in order
-
+@export var all_deliveries: Array[DeliveryData]
 
 func _ready() -> void:
 	super()
@@ -18,17 +17,7 @@ func interact():
 		player.interact_label.text = "You already have your order! head to " + DeliveryManager.current_delivery.address
 		return
 
-	var stage = WorldState.current_stage
-	
-	print("Stage: ", stage)
-	
-	# Check if we have a delivery for this stage
-	if stage < deliveries.size():
-		var pizza_to_give = deliveries[stage]
-		DeliveryManager.start_delivery(pizza_to_give)
-		
-		# Feedback for the player
-		player.interact_label.text = "Picked up " + pizza_to_give.address
-		print("Order started: ", pizza_to_give.pizza_type)
-	else:
-		print("No more orders! The world is ending.")
+	var current_stage = WorldState.current_stage
+	if current_stage < all_deliveries.size():
+		var order = all_deliveries[current_stage]
+		DeliveryManager.start_delivery(order) # This emits the signal

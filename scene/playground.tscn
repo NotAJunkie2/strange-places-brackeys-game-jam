@@ -3,24 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://ci634a81104i6" path="res://scene/character.tscn" id="1_char"]
 [ext_resource type="PackedScene" uid="uid://bpbnwisg6045y" path="res://scene/bush.tscn" id="2_clejj"]
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
-[ext_resource type="Script" uid="uid://cxn4up00321cb" path="res://scripts/Interactables/delivery_zone.gd" id="4_c13q2"]
+[ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1200, 40)
-
-[sub_resource type="Gradient" id="Gradient_c13q2"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_awv55"]
-gradient = SubResource("Gradient_c13q2")
-fill_from = Vector2(0.35779816, 0.75688076)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt31o"]
-size = Vector2(775, 294)
-
-[sub_resource type="Gradient" id="Gradient_nq230"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m43lc"]
-gradient = SubResource("Gradient_nq230")
 
 [node name="Playground" type="Node2D" unique_id=1724821274]
 
@@ -42,20 +28,8 @@ color = Color(0.4, 0.4, 0.4, 1)
 [node name="Bush" parent="." unique_id=679312658 instance=ExtResource("2_clejj")]
 position = Vector2(200, 0)
 
-[node name="OrderDeliveryPlace" type="Area2D" parent="." unique_id=1349557474]
-position = Vector2(978, -392)
-collision_layer = 8
-script = ExtResource("4_c13q2")
-texture = SubResource("GradientTexture2D_awv55")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrderDeliveryPlace" unique_id=814589316]
-position = Vector2(17.5, 304)
-shape = SubResource("RectangleShape2D_jt31o")
-
-[node name="Sprite2D" type="Sprite2D" parent="OrderDeliveryPlace" unique_id=1398873493]
-position = Vector2(0, 101)
-scale = Vector2(8.9375, 8.9375)
-texture = SubResource("GradientTexture2D_m43lc")
+[node name="DeliveryZone_Chill Joe" parent="." unique_id=1471768026 instance=ExtResource("3_clejj")]
+position = Vector2(1709, -953)
 
 [node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
 position = Vector2(-901, -486)
