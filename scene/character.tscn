@@ -28,6 +28,7 @@ size = Vector2(102, 74)
 z_index = 5
 collision_mask = 4
 script = ExtResource("1_char")
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
 position = Vector2(27, -2)
@@ -90,5 +91,9 @@ shape = SubResource("RectangleShape2D_p3t0x")
 [node name="HealthBar" parent="CanvasLayer" unique_id=563177312 instance=ExtResource("7_hb")]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 120.0
+offset_bottom = 120.0
 
-[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("8_ds")]
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 instance=ExtResource("8_ds")]

@@ -12,15 +12,8 @@ var can_interact: bool = false
 var current_interactible: GenericInteractible = null
 
 var health: int
-var max_health: int = 3
-
-const MODIFIER_HEALTH := {
-	Enums.PizzaModifier.FRAGILE: 1,
-	Enums.PizzaModifier.UNSTABLE: 3,
-	Enums.PizzaModifier.UMBRAL: 6,
-	Enums.PizzaModifier.SUCCULENT: 6,
-	Enums.PizzaModifier.NORMAL: 6,
-}
+var max_health: int = 6
+var current_modifier: Enums.PizzaModifier = Enums.PizzaModifier.NORMAL
 
 
 func _ready() -> void:
@@ -44,7 +37,10 @@ func _physics_process(delta: float) -> void:
 
 
 func damage(amount: int) -> void:
-	health -= amount
+	if current_modifier == Enums.PizzaModifier.FRAGILE:
+		health -= amount * 2
+	else:
+		health -= amount
 	health_bar.update_health(health)
 	_damage_anim()
 	if health <= 0:
@@ -67,8 +63,7 @@ func _die() -> void:
 	death_screen.show_screen()
 
 
-#permet de set le modifier au player
 func set_modifier(modifier: Enums.PizzaModifier) -> void:
-	max_health = MODIFIER_HEALTH.get(modifier, 6)
+	current_modifier = modifier
 	health = max_health
 	health_bar.init_health(max_health)
