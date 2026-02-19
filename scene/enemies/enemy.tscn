@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://w6n68w3omhrw"]
+
+[ext_resource type="Script" uid="uid://cbmm1e6pib1n6" path="res://scripts/enemies/enemy.gd" id="1_x1d7m"]
+[ext_resource type="Texture2D" uid="uid://d0w6jxsjhv8rd" path="res://assets/enemies/Cat_01.png" id="2_rlt6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmyt"]
+size = Vector2(198, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33syf"]
+size = Vector2(176, 53.5)
+
+[node name="enemy" type="RigidBody2D" unique_id=329662660]
+collision_layer = 5
+gravity_scale = 0.0
+script = ExtResource("1_x1d7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1721068949]
+texture = ExtResource("2_rlt6u")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1136897645]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2044269967]
+position = Vector2(13, 27)
+shape = SubResource("RectangleShape2D_fkmyt")
+debug_color = Color(0.8007493, 0.13580313, 0.095779784, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534165482]
+position = Vector2(14, 60)
+shape = SubResource("RectangleShape2D_33syf")

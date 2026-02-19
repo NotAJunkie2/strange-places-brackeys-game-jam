@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
 [ext_resource type="Script" uid="uid://c4bvu8fbala1v" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
 [ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
+[ext_resource type="PackedScene" path="res://scene/ui/health_bar.tscn" id="7_hb"]
+[ext_resource type="PackedScene" path="res://scene/ui/death_screen.tscn" id="8_ds"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbevu"]
 radius = 64.0
@@ -26,6 +28,7 @@ size = Vector2(102, 74)
 z_index = 5
 collision_mask = 4
 script = ExtResource("1_char")
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
 position = Vector2(27, -2)
@@ -40,7 +43,7 @@ monitorable = false
 z_as_relative = false
 shape = SubResource("CircleShape2D_interact")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2016254237]
+[node name="Sprite2D_TOREMOVE" type="Sprite2D" parent="." unique_id=2016254237]
 texture = ExtResource("2_p3t0x")
 region_rect = Rect2(1.755, 58.5, 61.245, 71)
 
@@ -82,3 +85,15 @@ collision_priority = 0.01
 z_as_relative = false
 position = Vector2(29, 103)
 shape = SubResource("RectangleShape2D_p3t0x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=415140961]
+
+[node name="HealthBar" parent="CanvasLayer" unique_id=563177312 instance=ExtResource("7_hb")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 120.0
+offset_bottom = 120.0
+
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 instance=ExtResource("8_ds")]
