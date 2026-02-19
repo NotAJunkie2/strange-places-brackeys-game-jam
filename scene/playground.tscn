@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpbnwisg6045y" path="res://scene/bush.tscn" id="2_clejj"]
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
+[ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/enemy.tscn" id="5_c13q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1200, 40)
@@ -19,6 +20,7 @@ position = Vector2(-16, 27)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
 position = Vector2(0, 200)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=2132535159]
 shape = SubResource("RectangleShape2D_floor")
@@ -37,6 +39,7 @@ position = Vector2(200, 0)
 position = Vector2(1709, -953)
 
 [node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
-z_as_relative = false
-y_sort_enabled = true
 position = Vector2(-901, -486)
+
+[node name="enemy" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
+position = Vector2(510, -147)
