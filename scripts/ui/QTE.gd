@@ -17,7 +17,7 @@ var active: bool = false
 var cursor_progress: float = 0.0
 var zone_start: float = 0.0
 var zone_end: float = 0.0
-var target_key: String = "A"
+var target_key: String = "Q"
 var target_keycode: int = KEY_Q
 var pending_damage: float = 0.0
 

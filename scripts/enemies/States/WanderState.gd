@@ -28,4 +28,4 @@ func process_physics(delta: float) -> void:
 func _pick_random_direction() -> void:
 	var angle := randf() * TAU
 	direction = Vector2(cos(angle), sin(angle))
-	timer = randf_range(2.0, 4.0)
+	timer = randf_range(1.0, 2.5)

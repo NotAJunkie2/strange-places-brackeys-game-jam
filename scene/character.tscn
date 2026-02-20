@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ci634a81104i6"]
 
 [ext_resource type="Script" uid="uid://cpd6op4h6f642" path="res://scripts/Character.gd" id="1_char"]
-[ext_resource type="Texture2D" uid="uid://ynpvc71jy1ev" path="res://assets/character/idle/Pizza guy Idle_01.png" id="2_p3t0x"]
 [ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="2_sm"]
+[ext_resource type="Texture2D" uid="uid://y4ihpdnkrrg1" path="res://assets/character/idle/Pizza guy Idle-sheet.png" id="2_t17xi"]
+[ext_resource type="Texture2D" uid="uid://drf3tr15bkeqr" path="res://assets/character/run/Pizza guy Run-sheet.png" id="3_beyxi"]
 [ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
 [ext_resource type="Script" uid="uid://c4bvu8fbala1v" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
 [ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
@@ -10,20 +11,71 @@
 [ext_resource type="PackedScene" path="res://scene/ui/death_screen.tscn" id="8_ds"]
 [ext_resource type="PackedScene" uid="uid://sfy34bkk0kbh" path="res://scene/ui/qte.tscn" id="9_qte"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbevu"]
-radius = 64.0
-height = 286.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t17xi"]
+size = Vector2(90, 71)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
 radius = 175.32826
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6pvx"]
+atlas = ExtResource("2_t17xi")
+region = Rect2(0, 0, 265, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2y7t"]
+atlas = ExtResource("2_t17xi")
+region = Rect2(265, 0, 265, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy7ch"]
+atlas = ExtResource("3_beyxi")
+region = Rect2(0, 22, 285, 319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6hc6"]
+atlas = ExtResource("3_beyxi")
+region = Rect2(314, 22, 285, 319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp7ui"]
+atlas = ExtResource("3_beyxi")
+region = Rect2(628, 22, 285, 319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk88t"]
+atlas = ExtResource("3_beyxi")
+region = Rect2(942, 22, 285, 319)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fky7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6pvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2y7t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy7ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6hc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp7ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk88t")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_prompt"]
 font_size = 20
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3t0x"]
-size = Vector2(102, 74)
 
 [node name="Character" type="CharacterBody2D" unique_id=77527563 groups=["character"]]
 z_index = 5
@@ -31,8 +83,8 @@ collision_mask = 4
 script = ExtResource("1_char")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
-position = Vector2(27, -2)
-shape = SubResource("CapsuleShape2D_mbevu")
+position = Vector2(0, 98.5)
+shape = SubResource("RectangleShape2D_t17xi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1770370944]
 collision_layer = 0
@@ -43,12 +95,10 @@ monitorable = false
 z_as_relative = false
 shape = SubResource("CircleShape2D_interact")
 
-[node name="Sprite2D_TOREMOVE" type="Sprite2D" parent="." unique_id=2016254237]
-texture = ExtResource("2_p3t0x")
-region_rect = Rect2(1.755, 58.5, 61.245, 71)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1713370691]
-visible = false
+[node name="Animator" type="AnimatedSprite2D" parent="." unique_id=1713370691]
+sprite_frames = SubResource("SpriteFrames_3fky7")
+animation = &"idle"
+frame_progress = 0.82799107
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2099376179]
 zoom = Vector2(0.8, 0.8)
@@ -76,15 +126,6 @@ script = ExtResource("3_walk")
 
 [node name="Hide" type="Node" parent="StateMachine" unique_id=1353850808]
 script = ExtResource("6_hidden")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1327729244]
-collision_mask = 14
-collision_priority = 0.01
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=197441367]
-z_as_relative = false
-position = Vector2(29, 103)
-shape = SubResource("RectangleShape2D_p3t0x")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=415140961]
 

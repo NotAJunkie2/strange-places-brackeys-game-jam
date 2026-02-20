@@ -1,10 +1,11 @@
 class_name IdleState extends State
 
 @onready var character: Character = owner
-
+@onready var animator: AnimatedSprite2D = owner.find_child("Animator")
 
 func enter(_previous: State) -> void:
 	character.velocity = Vector2.ZERO
+	animator.play("idle")
 
 
 func process_input(event: InputEvent) -> void:
