@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://cv206im5pykls"]
+
+[ext_resource type="Script" uid="uid://nvtpanl8ggcj" path="res://scripts/main_menu.gd" id="1_3er1b"]
+[ext_resource type="Texture2D" uid="uid://twp4rqf11gda" path="res://assets/world/basic/Candy_Shop.png" id="2_hxu56"]
+[ext_resource type="AudioStream" uid="uid://bcy8hniycde0w" path="res://assets/world/basic/2026-02-19_15-15-04.mp3" id="3_2fwvj"]
+[ext_resource type="Script" uid="uid://b71p48gbviwl5" path="res://scene/sound_slider.gd" id="4_0iwki"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fwvj"]
+texture = ExtResource("2_hxu56")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0iwki"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 4
+
+[node name="MainMenu" type="Control" unique_id=931283385]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3er1b")
+
+[node name="Background_panel" type="Panel" parent="." unique_id=205595554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2fwvj")
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="." unique_id=283072987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -92.25
+offset_right = 120.5
+offset_bottom = 92.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="MainMenuButtons" unique_id=1220379985]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MainMenuButtons" unique_id=1430777051]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MainMenuButtons" unique_id=154730466]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2082083194]
+stream = ExtResource("3_2fwvj")
+autoplay = true
+parameters/looping = true
+
+[node name="Options_Panel" type="Panel" parent="." unique_id=506030609]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.75
+offset_top = -141.375
+offset_right = 187.75
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options_Panel" unique_id=1473289607]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.375
+offset_right = 137.375
+offset_bottom = 49.375
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Options_Panel" unique_id=264388352]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.5
+offset_top = -45.0
+offset_right = 120.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
+text = "Return"
+
+[node name="SoundSlider" type="HSlider" parent="Options_Panel" unique_id=729500677]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 55.75
+offset_top = -9.3125
+offset_right = -64.75
+offset_bottom = 6.6875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_0iwki")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_0iwki")
+audio_bus_name = "Master"
+
+[connection signal="pressed" from="MainMenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Options_Panel/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="value_changed" from="Options_Panel/SoundSlider" to="Options_Panel/SoundSlider" method="_on_value_changed"]

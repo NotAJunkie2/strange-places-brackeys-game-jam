@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="strange-places"
-run/main_scene="uid://by2x7x3xtay5h"
+run/main_scene="uid://cv206im5pykls"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Enums="*uid://bu4rh5inij2ml"
 WorldState="*uid://1x4hamfopkea"
 DeliveryManager="*uid://2jhmuvrahsij"
+
+[dotnet]
+
+project/assembly_name="strange-places"
 
 [file_customization]
 
