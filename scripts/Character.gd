@@ -6,19 +6,21 @@ class_name Character extends CharacterBody2D
 @onready var interaction_area: Area2D = $Area2D
 @onready var interact_label: Label = $InteractLabel
 @onready var health_bar: HealthBar = $CanvasLayer/HealthBar
+@onready var qte: QTEBar = $CanvasLayer/QTE
 
 var is_hidden: bool = false
 var can_interact: bool = false
 var current_interactible: GenericInteractible = null
 
-var health: int
-var max_health: int = 6
+var health: float
+var max_health: float = 6.0
 var current_modifier: Enums.PizzaModifier = Enums.PizzaModifier.NORMAL
 
 
 func _ready() -> void:
 	health = max_health
 	health_bar.init_health(max_health)
+	qte.qte_finished.connect(_on_qte_finished)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -30,23 +32,35 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	if current_modifier == Enums.PizzaModifier.UNSTABLE:
+		_unstable_damage(delta)
 
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
 
-func damage(amount: int) -> void:
+func damage(amount: float) -> void:
 	if current_modifier == Enums.PizzaModifier.FRAGILE:
-		health -= amount * 2
-	else:
-		health -= amount
+		amount *= 2.0
+	qte.start_qte(amount)
+
+
+func _on_qte_finished(dodged: bool, amount: float) -> void:
+	if dodged:
+		return
+	health -= amount
 	health_bar.update_health(health)
 	_damage_anim()
-	if health <= 0:
+	if health <= 0.0:
 		_die()
-		return
 
+
+func _unstable_damage(delta: float) -> void:
+	health -= delta / 15.0
+	health_bar.update_health(health)
+	if health <= 0.0:
+		_die()
 
 func _damage_anim() -> void:
 	var tween := create_tween()
