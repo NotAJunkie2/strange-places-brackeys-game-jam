@@ -1,7 +1,10 @@
 class_name WalkState extends State
 
 @onready var character: Character = owner
+@onready var animator: AnimatedSprite2D = owner.find_child("Animator")
 
+func enter(_state: State) -> void:
+	animator.play("run")
 
 func process_input(event: InputEvent) -> void:
 	pass

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpbnwisg6045y" path="res://scene/bush.tscn" id="2_clejj"]
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
-[ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/enemy.tscn" id="5_c13q2"]
+[ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/cat.tscn" id="5_c13q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1200, 40)
@@ -41,7 +41,13 @@ position = Vector2(1709, -953)
 [node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
 position = Vector2(-901, -486)
 
-[node name="enemy" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
-position = Vector2(510, -147)
+[node name="Cat2" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
+position = Vector2(-1108, 188)
+
+[node name="Cat" parent="." unique_id=4142404 instance=ExtResource("5_c13q2")]
+position = Vector2(547, -666)
 min_speed = 150.0
 max_speed = 300.0
+
+[node name="Cat3" parent="." unique_id=1405126069 instance=ExtResource("5_c13q2")]
+position = Vector2(1029, -129)

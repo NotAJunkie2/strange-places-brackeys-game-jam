@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0w6jxsjhv8rd"
-path="res://.godot/imported/Cat_01.png-f91e46b0beff2e9e693e13bc3aab02f1.ctex"
+uid="uid://corcfr15qu6ej"
+path="res://.godot/imported/Cat_04_walk_sheet.png-8b65eb8c4d266e84742287004b498091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/Cat_01.png"
-dest_files=["res://.godot/imported/Cat_01.png-f91e46b0beff2e9e693e13bc3aab02f1.ctex"]
+source_file="res://assets/enemies/Cat_04_walk_sheet.png"
+dest_files=["res://.godot/imported/Cat_04_walk_sheet.png-8b65eb8c4d266e84742287004b498091.ctex"]
 
 [params]
 

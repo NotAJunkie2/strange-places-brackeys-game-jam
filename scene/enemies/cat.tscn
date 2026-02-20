@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://w6n68w3omhrw"]
+
+[ext_resource type="Script" uid="uid://cbmm1e6pib1n6" path="res://scripts/enemies/enemy.gd" id="1_x1d7m"]
+[ext_resource type="Texture2D" uid="uid://c8cbsc7s8p367" path="res://assets/enemies/Cat_01_walk_sheet.png" id="2_elwo4"]
+[ext_resource type="Texture2D" uid="uid://rq5k8pvjbla5" path="res://assets/enemies/Cat_02_walk_sheet.png" id="3_qexx6"]
+[ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="3_sm"]
+[ext_resource type="Script" uid="uid://dpt01evynfhy4" path="res://scripts/enemies/States/WanderState.gd" id="4_wander"]
+[ext_resource type="Texture2D" uid="uid://corcfr15qu6ej" path="res://assets/enemies/Cat_04_walk_sheet.png" id="4_yjcbu"]
+[ext_resource type="Script" uid="uid://b858oadevtxhp" path="res://scripts/enemies/States/ChaseState.gd" id="5_chase"]
+[ext_resource type="Texture2D" uid="uid://d4kk5qale3vs0" path="res://assets/enemies/Cat_03_walk_sheet.png" id="5_t2mfa"]
+[ext_resource type="Script" uid="uid://5ixv1um7jqus" path="res://scripts/enemies/States/FleeState.gd" id="6_flee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_714qi"]
+atlas = ExtResource("2_elwo4")
+region = Rect2(0, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsy0w"]
+atlas = ExtResource("2_elwo4")
+region = Rect2(252, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpr25"]
+atlas = ExtResource("3_qexx6")
+region = Rect2(0, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7kq"]
+atlas = ExtResource("3_qexx6")
+region = Rect2(252, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj08d"]
+atlas = ExtResource("4_yjcbu")
+region = Rect2(0, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y82r0"]
+atlas = ExtResource("4_yjcbu")
+region = Rect2(252, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3ji"]
+atlas = ExtResource("5_t2mfa")
+region = Rect2(0, 0, 252, 204)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt3li"]
+atlas = ExtResource("5_t2mfa")
+region = Rect2(252, 0, 252, 204)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbpyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_714qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsy0w")
+}],
+"loop": true,
+"name": &"black_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpr25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7kq")
+}],
+"loop": true,
+"name": &"brown_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj08d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y82r0")
+}],
+"loop": true,
+"name": &"ginger_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt3li")
+}],
+"loop": true,
+"name": &"white_cat",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_elwo4"]
+radius = 86.0
+height = 266.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qexx6"]
+radius = 39.0
+height = 176.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 643.0195
+
+[node name="Cat" type="RigidBody2D" unique_id=329662660]
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_x1d7m")
+
+[node name="Animator" type="AnimatedSprite2D" parent="." unique_id=1939367175]
+position = Vector2(10, 0)
+sprite_frames = SubResource("SpriteFrames_sbpyo")
+animation = &"black_cat"
+frame_progress = 0.41092014
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1136897645]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2044269967]
+position = Vector2(13, 14)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_elwo4")
+debug_color = Color(0.8007493, 0.13580313, 0.095779784, 0.41960785)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1534165482]
+position = Vector2(14, 43)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qexx6")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=156990715]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=910518352]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="StateMachine" type="Node" parent="." unique_id=466056313]
+script = ExtResource("3_sm")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" unique_id=1016735241]
+script = ExtResource("4_wander")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=533247290]
+script = ExtResource("5_chase")
+
+[node name="Flee" type="Node" parent="StateMachine" unique_id=1077132013]
+script = ExtResource("6_flee")

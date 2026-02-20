@@ -7,6 +7,7 @@ class_name Character extends CharacterBody2D
 @onready var interact_label: Label = $InteractLabel
 @onready var health_bar: HealthBar = $CanvasLayer/HealthBar
 @onready var qte: QTEBar = $CanvasLayer/QTE
+@onready var animator: AnimatedSprite2D = $Animator
 
 var is_hidden: bool = false
 var can_interact: bool = false
@@ -38,9 +39,13 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
+	animator.flip_h = velocity.x < 0
 
 
 func damage(amount: float) -> void:
+	if is_hidden:
+		return
+
 	if current_modifier == Enums.PizzaModifier.FRAGILE:
 		amount *= 2.0
 	qte.start_qte(amount)
