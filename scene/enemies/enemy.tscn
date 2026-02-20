@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cbmm1e6pib1n6" path="res://scripts/enemies/enemy.gd" id="1_x1d7m"]
 [ext_resource type="Texture2D" uid="uid://d0w6jxsjhv8rd" path="res://assets/enemies/Cat_01.png" id="2_rlt6u"]
+[ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="3_sm"]
+[ext_resource type="Script" uid="uid://dpt01evynfhy4" path="res://scripts/enemies/States/WanderState.gd" id="4_wander"]
+[ext_resource type="Script" uid="uid://b858oadevtxhp" path="res://scripts/enemies/States/ChaseState.gd" id="5_chase"]
+[ext_resource type="Script" uid="uid://5ixv1um7jqus" path="res://scripts/enemies/States/FleeState.gd" id="6_flee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmyt"]
 size = Vector2(198, 124)
@@ -9,8 +13,12 @@ size = Vector2(198, 124)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33syf"]
 size = Vector2(176, 53.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 643.0195
+
 [node name="enemy" type="RigidBody2D" unique_id=329662660]
-collision_layer = 5
+collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_x1d7m")
 
@@ -28,3 +36,22 @@ debug_color = Color(0.8007493, 0.13580313, 0.095779784, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534165482]
 position = Vector2(14, 60)
 shape = SubResource("RectangleShape2D_33syf")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=156990715]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=910518352]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="StateMachine" type="Node" parent="." unique_id=466056313]
+script = ExtResource("3_sm")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" unique_id=1016735241]
+script = ExtResource("4_wander")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=533247290]
+script = ExtResource("5_chase")
+
+[node name="Flee" type="Node" parent="StateMachine" unique_id=1077132013]
+script = ExtResource("6_flee")

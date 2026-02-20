@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://sfy34bkk0kbh"]
+
+[ext_resource type="Script" uid="uid://bsfg8af1gbixt" path="res://scripts/ui/QTE.gd" id="1_qte"]
+
+[node name="QTE" type="Control" unique_id=733299826]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -176.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qte")

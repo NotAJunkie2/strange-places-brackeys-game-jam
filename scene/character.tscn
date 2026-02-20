@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
 [ext_resource type="PackedScene" path="res://scene/ui/health_bar.tscn" id="7_hb"]
 [ext_resource type="PackedScene" path="res://scene/ui/death_screen.tscn" id="8_ds"]
+[ext_resource type="PackedScene" uid="uid://sfy34bkk0kbh" path="res://scene/ui/qte.tscn" id="9_qte"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbevu"]
 radius = 64.0
@@ -28,7 +29,6 @@ size = Vector2(102, 74)
 z_index = 5
 collision_mask = 4
 script = ExtResource("1_char")
-speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
 position = Vector2(27, -2)
@@ -95,5 +95,8 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 120.0
 offset_bottom = 120.0
+
+[node name="QTE" parent="CanvasLayer" unique_id=1000800055 instance=ExtResource("9_qte")]
+zone_size = 0.05
 
 [node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 instance=ExtResource("8_ds")]

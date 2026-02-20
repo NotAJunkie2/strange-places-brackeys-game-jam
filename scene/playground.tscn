@@ -43,3 +43,5 @@ position = Vector2(-901, -486)
 
 [node name="enemy" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
 position = Vector2(510, -147)
+min_speed = 150.0
+max_speed = 300.0
