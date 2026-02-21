@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxn4up00321cb" path="res://scripts/Interactables/delivery_zone.gd" id="1_2cpi1"]
 [ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/1_tutorial_order.tres" id="2_et7bk"]
 [ext_resource type="Texture2D" uid="uid://br5m3v40i68dy" path="res://assets/world/basic/House_01.png" id="3_2cpi1"]
-[ext_resource type="AudioStream" uid="uid://wyifqkonqcl5" path="res://audio/sfx/oxidvideos-placing-cardboard-box-453025.mp3" id="4_et7bk"]
+[ext_resource type="AudioStream" uid="uid://wyifqkonqcl5" path="res://audio/sfx/bell/cardboard_1.mp3" id="4_et7bk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jt31o"]
 size = Vector2(1216, 524)
@@ -25,3 +25,4 @@ texture = ExtResource("3_2cpi1")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=405358869]
 stream = ExtResource("4_et7bk")
+volume_db = 3.0

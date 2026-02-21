@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://dunogcppjq0s" path="res://resources/orders/5_hell_order_dark.tres" id="7_lw0px"]
 [ext_resource type="Resource" uid="uid://dht3y3tqhmkr2" path="res://resources/orders/6_hell_order_speed.tres" id="8_vy7nu"]
 [ext_resource type="Resource" uid="uid://dy7fq8vq6ssgy" path="res://resources/orders/7_hq_order_final.tres" id="9_jy2i8"]
-[ext_resource type="AudioStream" uid="uid://dg3x0iudy8ktx" path="res://audio/sfx/bell/bell_2.wav" id="11_puavp"]
+[ext_resource type="AudioStream" uid="uid://cuw5mrjqddw12" path="res://audio/sfx/bell/bell_1.wav" id="11_puavp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhxy7"]
 size = Vector2(775, 294)
