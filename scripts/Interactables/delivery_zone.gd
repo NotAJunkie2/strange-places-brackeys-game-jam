@@ -2,9 +2,12 @@
 extends GenericInteractible
 class_name DeliveryZone
 
+@onready var character = owner.find_child("Character") as Character
 @export var delivery_order: DeliveryData:
 	set(value):
 		delivery_order = value
+		if not is_node_ready():
+			await ready
 		_update_visuals()
 
 func _ready() -> void:
@@ -15,20 +18,34 @@ func _ready() -> void:
 		DeliveryManager.delivery_started.connect(_on_delivery_started)
 		DeliveryManager.delivery_completed.connect(_on_delivery_completed)
 
+func _enter_tree() -> void:
+	_update_visuals()
+
 func _update_visuals():
-	# If we assigned a resource, pull the data into the scene
-	if delivery_order and has_node("Sprite2D"):
-		# If it ever has icon property
+	# Use 'get_node_or_null' to prevent errors in the editor console
+	var sprite = get_node_or_null("Sprite2D")
+	var label = get_node_or_null("EditorLabel")
+	
+	if delivery_order:
+		# Update Name (Note: name sync in editor can be finicky)
 		name = "DeliveryZone_" + delivery_order.client
-		if has_node("EditorLabel"):
-			$EditorLabel.text = delivery_order.client
+		
+		if sprite and delivery_order.texture:
+			sprite.texture = delivery_order.texture
+		
+		if label:
+			label.text = delivery_order.client
 
 func _on_delivery_started(started_data: DeliveryData):
 	if started_data == delivery_order:
 		_set_active_state(true)
+		if character:
+			character.current_target = self
 
 func _on_delivery_completed():
 	_set_active_state(false)
+	character.interact_label.text = "Order delivered to " + delivery_order.client
+	character.current_target = owner.find_child("PizzaPlace")
 
 func _set_active_state(state: bool):
 	print("Setting state to: ", state)
@@ -44,4 +61,3 @@ func _set_active_state(state: bool):
 func interact():
 	# Trigger the completion in the global manager
 	DeliveryManager.complete_delivery()
-	player.interact_label.text = "Order delivered to " + delivery_order.client

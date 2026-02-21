@@ -26,6 +26,11 @@ func update_health(hp: float) -> void:
 	current_hp = hp
 	queue_redraw()
 
+func _process(_delta: float) -> void:
+	if DeliveryManager.current_delivery != null:
+		visible = true
+	else:
+		visible = false
 
 func _draw() -> void:
 	if max_hp <= 0.0:

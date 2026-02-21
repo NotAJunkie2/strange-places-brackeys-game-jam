@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
 [ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/cat.tscn" id="5_c13q2"]
+[ext_resource type="Resource" uid="uid://q4t5c0fatjuy" path="res://resources/orders/2_tutorial_order_cats.tres" id="6_m43lc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(1200, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m43lc"]
+size = Vector2(721, 527)
 
 [node name="Playground" type="Node2D" unique_id=1724821274]
 y_sort_enabled = true
@@ -43,27 +44,31 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(-772, -12)
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
-position = Vector2(0, 200)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=2132535159]
-shape = SubResource("RectangleShape2D_floor")
-
-[node name="FloorSprite" type="ColorRect" parent="Floor" unique_id=635742127]
-offset_left = -600.0
-offset_top = -20.0
-offset_right = 600.0
-offset_bottom = 20.0
-color = Color(0.4, 0.4, 0.4, 1)
-
 [node name="Bush" parent="." unique_id=679312658 instance=ExtResource("2_clejj")]
 position = Vector2(200, 0)
 
 [node name="DeliveryZone_Chill Joe" parent="." unique_id=1471768026 instance=ExtResource("3_clejj")]
 position = Vector2(1383, -1612)
 
-[node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Chill Joe" unique_id=1044203725]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Chill Joe/StaticBody2D" unique_id=47188262]
+position = Vector2(36, 253.5)
+shape = SubResource("RectangleShape2D_m43lc")
+
+[node name="DeliveryZone_Jack Soy" parent="." unique_id=1046043506 instance=ExtResource("3_clejj")]
+position = Vector2(370, 150)
+delivery_order = ExtResource("6_m43lc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Jack Soy" unique_id=1244121439]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Jack Soy/StaticBody2D" unique_id=1378483640]
+position = Vector2(-4.5, 253.5)
+shape = SubResource("RectangleShape2D_m43lc")
+
+[node name="PizzaPlace" parent="." unique_id=1602411763 groups=["pizza_place"] instance=ExtResource("3_2ob5w")]
 position = Vector2(-901, -486)
 
 [node name="Cat2" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]

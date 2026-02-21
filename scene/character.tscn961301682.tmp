@@ -146,6 +146,7 @@ offset_right = 120.0
 offset_bottom = 120.0
 
 [node name="TargetArrow" type="Sprite2D" parent="OrderUI" unique_id=2092596924]
+top_level = true
 z_index = 25
-position = Vector2(12, -12)
+position = Vector2(732, 359)
 texture = ExtResource("11_beyxi")
