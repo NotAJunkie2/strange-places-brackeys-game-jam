@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://by2x7x3xtay5h"]
 
 [ext_resource type="PackedScene" uid="uid://ci634a81104i6" path="res://scene/character.tscn" id="1_char"]
+[ext_resource type="Script" uid="uid://b8dshfx3yo3m6" path="res://scripts/biome.gd" id="1_nq230"]
 [ext_resource type="PackedScene" uid="uid://bpbnwisg6045y" path="res://scene/bush.tscn" id="2_clejj"]
+[ext_resource type="Texture2D" uid="uid://maujps8kkyr8" path="res://assets/world/basic/biome_normal.png" id="2_m43lc"]
 [ext_resource type="PackedScene" uid="uid://dowf5y8o6vv8o" path="res://scene/pizza_place.tscn" id="3_2ob5w"]
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
 [ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/cat.tscn" id="5_c13q2"]
@@ -12,11 +14,34 @@ size = Vector2(1200, 40)
 [node name="Playground" type="Node2D" unique_id=1724821274]
 y_sort_enabled = true
 
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=339811638]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1141654554]
+position = Vector2(-1648, 806)
+build_mode = 1
+polygon = PackedVector2Array(2, 8, -139, -341, -108, -532, -130, -955, -287, -1525, 24, -1888, 1032, -2002, 1605, -2554, 1988, -2502, 3666, -2451, 3776, -2554, 5040, -2537, 5458, -2268, 5685, -2181, 6262, -2047, 6217, -165, 6020, -48, 5206, -131, 4719, 4, 3472, -113, 3300, 14, 2150, 4, 1902, -48, 1819, 35, 1173, 21, 504, 28)
+one_way_collision_margin = 2.0
+
+[node name="NormalBiome" type="Area2D" parent="." unique_id=829300439]
+z_index = -1
+script = ExtResource("1_nq230")
+metadata/_custom_type_script = "uid://b8dshfx3yo3m6"
+
+[node name="Sprite2D" type="Sprite2D" parent="NormalBiome" unique_id=1293380353]
+position = Vector2(1372, -451)
+texture = ExtResource("2_m43lc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NormalBiome" unique_id=2089484290]
+position = Vector2(-1648, 806)
+polygon = PackedVector2Array(2, 8, -139, -341, -108, -532, -130, -955, -287, -1525, 24, -1888, 1032, -2002, 1605, -2554, 1988, -2502, 3666, -2451, 3776, -2554, 5040, -2537, 5458, -2268, 5685, -2181, 6262, -2047, 6217, -165, 6020, -48, 5206, -131, 4719, 4, 3472, -113, 3300, 14, 2150, 4, 1902, -48, 1819, 35, 1173, 21, 504, 28)
+
 [node name="Character" parent="." unique_id=1399939567 instance=ExtResource("1_char")]
 z_index = 0
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(-16, 27)
+position = Vector2(-772, -12)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=2126393093]
 position = Vector2(0, 200)
@@ -36,18 +61,18 @@ color = Color(0.4, 0.4, 0.4, 1)
 position = Vector2(200, 0)
 
 [node name="DeliveryZone_Chill Joe" parent="." unique_id=1471768026 instance=ExtResource("3_clejj")]
-position = Vector2(1709, -953)
+position = Vector2(1383, -1612)
 
 [node name="PizzaPlace" parent="." unique_id=1602411763 instance=ExtResource("3_2ob5w")]
 position = Vector2(-901, -486)
 
 [node name="Cat2" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
-position = Vector2(-1108, 188)
+position = Vector2(3201, -1124)
 
 [node name="Cat" parent="." unique_id=4142404 instance=ExtResource("5_c13q2")]
-position = Vector2(547, -666)
+position = Vector2(-112, -668)
 min_speed = 150.0
 max_speed = 300.0
 
 [node name="Cat3" parent="." unique_id=1405126069 instance=ExtResource("5_c13q2")]
-position = Vector2(1029, -129)
+position = Vector2(1272, 252)

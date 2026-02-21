@@ -17,22 +17,25 @@ var active: bool = false
 var cursor_progress: float = 0.0
 var zone_start: float = 0.0
 var zone_end: float = 0.0
-var target_key: String = "Q"
-var target_keycode: int = KEY_Q
+var target_key: String = "Left Click"
+var target_button_index: int = MouseButton.MOUSE_BUTTON_LEFT
 var pending_damage: float = 0.0
 
+var qte_queue: Array = []
 
 func _ready() -> void:
 	visible = false
 	set_process(false)
 	set_process_unhandled_input(false)
 
+func add_qte_to_queue(damage_amount: float) -> void:
+	qte_queue.append(damage_amount * 2 if (owner as Character).current_modifier == Enums.PizzaModifier.FRAGILE else damage_amount)
 
-func start_qte(damage_amount: float) -> void:
-	if active:
-		_finish(false)
+	if (not active):
+		start_qte()
 
-	pending_damage = damage_amount
+func start_qte() -> void:
+	pending_damage = qte_queue.pop_front()  
 	cursor_progress = 0.0
 
 	# Random zone position (making sure it fits)
@@ -41,11 +44,11 @@ func start_qte(damage_amount: float) -> void:
 
 	# Random key: A (physical Q) or E
 	if randi() % 2 == 0:
-		target_key = "A"
-		target_keycode = KEY_Q
+		target_key = "Left Click"
+		target_button_index = MouseButton.MOUSE_BUTTON_LEFT
 	else:
-		target_key = "E"
-		target_keycode = KEY_E
+		target_key = "Right Click"
+		target_button_index = MouseButton.MOUSE_BUTTON_RIGHT
 
 	active = true
 	visible = true
@@ -66,13 +69,16 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not active:
 		return
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.physical_keycode == target_keycode:
+
+	if event is InputEventMouseButton and event.pressed:
+		# Check if the button pressed matches the one we want (Left or Right)
+		if event.button_index == target_button_index:
 			if cursor_progress >= zone_start and cursor_progress <= zone_end:
 				_finish(true)
 			else:
 				_finish(false)
-		elif event.physical_keycode == KEY_Q or event.physical_keycode == KEY_E:
+			# If they clicked the WRONG mouse button, it's an automatic fail
+		elif event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT:
 			_finish(false)
 
 
@@ -82,6 +88,9 @@ func _finish(dodged: bool) -> void:
 	set_process(false)
 	set_process_unhandled_input(false)
 	qte_finished.emit(dodged, pending_damage)
+
+	if qte_queue.size() > 0:
+		start_qte()
 
 
 func _draw() -> void:

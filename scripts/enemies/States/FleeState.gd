@@ -18,5 +18,5 @@ func enter(_previous: State) -> void:
 
 func process_physics(delta: float) -> void:
 	flee_timer -= delta
-	if flee_timer <= 0.0:
+	if flee_timer <= 0.0 and DeliveryManager.current_delivery != null:
 		transition_sg.emit(&"Chase")

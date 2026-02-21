@@ -39,6 +39,7 @@ func _on_detection_body_exited(body: Node) -> void:
 
 
 func _on_hurt_box_body_entered(body: Node) -> void:
-	if body.is_in_group("character"):
+	if body.is_in_group("character") and DeliveryManager.current_delivery != null:
 		body.damage(damage)
-		state_machine.on_child_transition(&"Flee")
+
+	state_machine.on_child_transition(&"Flee")
