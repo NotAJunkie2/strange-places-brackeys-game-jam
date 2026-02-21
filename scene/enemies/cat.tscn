@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cbmm1e6pib1n6" path="res://scripts/enemies/enemy.gd" id="1_x1d7m"]
 [ext_resource type="Texture2D" uid="uid://c8cbsc7s8p367" path="res://assets/enemies/Cat_01_walk_sheet.png" id="2_elwo4"]
+[ext_resource type="AudioStream" uid="uid://64qkty66c08l" path="res://audio/sfx/cat/cat_meow_1.wav" id="2_y74tb"]
+[ext_resource type="AudioStream" uid="uid://cnf5ntl0nkxqf" path="res://audio/sfx/cat/cat_meow_2.wav" id="3_g5f5y"]
 [ext_resource type="Texture2D" uid="uid://rq5k8pvjbla5" path="res://assets/enemies/Cat_02_walk_sheet.png" id="3_qexx6"]
 [ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="3_sm"]
+[ext_resource type="AudioStream" uid="uid://7e6feryipqbo" path="res://audio/sfx/cat/cat_meow_3.wav" id="4_hx3lv"]
 [ext_resource type="Script" uid="uid://dpt01evynfhy4" path="res://scripts/enemies/States/WanderState.gd" id="4_wander"]
 [ext_resource type="Texture2D" uid="uid://corcfr15qu6ej" path="res://assets/enemies/Cat_04_walk_sheet.png" id="4_yjcbu"]
 [ext_resource type="Script" uid="uid://b858oadevtxhp" path="res://scripts/enemies/States/ChaseState.gd" id="5_chase"]
@@ -106,6 +109,7 @@ collision_mask = 5
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_x1d7m")
+cat_audio = Array[AudioStream]([ExtResource("2_y74tb"), ExtResource("3_g5f5y"), ExtResource("4_hx3lv")])
 
 [node name="Animator" type="AnimatedSprite2D" parent="." unique_id=1939367175]
 position = Vector2(10, 0)
@@ -145,3 +149,6 @@ script = ExtResource("5_chase")
 
 [node name="Flee" type="Node" parent="StateMachine" unique_id=1077132013]
 script = ExtResource("6_flee")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1876105010]
+volume_db = -5.0

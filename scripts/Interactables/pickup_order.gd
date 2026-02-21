@@ -1,6 +1,7 @@
 extends GenericInteractible
 
 @export var all_deliveries: Array[DeliveryData]
+@onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	super()
@@ -22,4 +23,5 @@ func interact():
 		var order = all_deliveries[current_stage]
 		player.health = 6.0
 		player.health_bar.update_health(player.health)
+		audioPlayer.play()
 		DeliveryManager.start_delivery(order) # This emits the signal

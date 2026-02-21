@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmagxkkx0og0j"
+path="res://.godot/imported/atmospheric distortion 7.wav-5ad5a5ac43734755b3c2809d2625b2e5.sample"
+
+[deps]
+
+source_file="res://audio/sfx/horror/atmospheric distortion 7.wav"
+dest_files=["res://.godot/imported/atmospheric distortion 7.wav-5ad5a5ac43734755b3c2809d2625b2e5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,6 +2,8 @@
 extends GenericInteractible
 class_name DeliveryZone
 
+
+@onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var character = owner.find_child("Character") as Character
 @export var delivery_order: DeliveryData:
 	set(value):
@@ -60,4 +62,5 @@ func _set_active_state(state: bool):
 
 func interact():
 	# Trigger the completion in the global manager
+	audioPlayer.play()
 	DeliveryManager.complete_delivery()

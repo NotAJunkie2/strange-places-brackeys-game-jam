@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://nvtpanl8ggcj" path="res://scripts/main_menu.gd" id="1_3er1b"]
 [ext_resource type="Texture2D" uid="uid://twp4rqf11gda" path="res://assets/world/basic/Candy_Shop.png" id="2_hxu56"]
-[ext_resource type="AudioStream" uid="uid://bcy8hniycde0w" path="res://assets/world/basic/2026-02-19_15-15-04.mp3" id="3_2fwvj"]
+[ext_resource type="AudioStream" uid="uid://cswph1qet1pfi" path="res://audio/bgm/normal/WAV_Chaotic_Periods.wav" id="3_0iwki"]
 [ext_resource type="Script" uid="uid://b71p48gbviwl5" path="res://scene/sound_slider.gd" id="4_0iwki"]
+[ext_resource type="PackedScene" uid="uid://cjwclrllisnwv" path="res://scene/ui/ui_sound_player.tscn" id="5_sepwh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fwvj"]
 texture = ExtResource("2_hxu56")
@@ -80,9 +81,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2082083194]
-stream = ExtResource("3_2fwvj")
+stream = ExtResource("3_0iwki")
+volume_db = -3.0
 autoplay = true
-parameters/looping = true
 
 [node name="Options_Panel" type="Panel" parent="." unique_id=506030609]
 layout_mode = 1
@@ -148,6 +149,9 @@ step = 0.05
 value = 1.0
 script = ExtResource("4_0iwki")
 audio_bus_name = "Master"
+
+[node name="UiSoundPlayer" parent="." unique_id=191955623 node_paths=PackedStringArray("buttonsToTarget") instance=ExtResource("5_sepwh")]
+buttonsToTarget = [NodePath("../Options_Panel/ReturnButton"), NodePath("../MainMenuButtons/ExitButton"), NodePath("../MainMenuButtons/OptionsButton"), NodePath("../MainMenuButtons/PlayButton")]
 
 [connection signal="pressed" from="MainMenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]

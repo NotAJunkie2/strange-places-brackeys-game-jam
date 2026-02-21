@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://be6hg2sqy2uon"]
+
+[ext_resource type="Script" uid="uid://b43l6b5121bf3" path="res://scene/bgm_player.gd" id="1_v122c"]
+[ext_resource type="AudioStream" uid="uid://rwarycj0pd0w" path="res://audio/bgm/normal/WAV_Cooking_Time!.wav" id="2_7ys7x"]
+
+[node name="BgmPlayer" type="Node" unique_id=1991467111]
+script = ExtResource("1_v122c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1487608661]
+stream = ExtResource("2_7ys7x")
+autoplay = true

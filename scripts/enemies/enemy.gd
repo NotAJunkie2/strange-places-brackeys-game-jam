@@ -1,13 +1,19 @@
 class_name Enemy extends RigidBody2D
-
+@export_group("Main Values")
 @export var damage: float = 1.0
 @export var min_speed: float = 300.0
 @export var max_speed: float = 350.0
+
+@export_group("Audio")
+@export var cat_audio : Array[AudioStream]
+@export var pitch_control: float = 2.0
+
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hurt_box: Area2D = $Area2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var animator: AnimatedSprite2D = $Animator
+@onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const ANIMATIONS: Array[String] = ["black_cat", "brown_cat", "ginger_cat", "white_cat"]
 
@@ -40,6 +46,10 @@ func _on_detection_body_exited(body: Node) -> void:
 
 func _on_hurt_box_body_entered(body: Node) -> void:
 	if body.is_in_group("character") and DeliveryManager.current_delivery != null:
+		if(cat_audio.size() > 0) : 
+			audioPlayer.pitch_scale += randf_range(-pitch_control, pitch_control)
+			audioPlayer.stream = cat_audio[randi_range(0, cat_audio.size() - 1)]
+			audioPlayer.play()
 		body.damage(damage)
 
 	state_machine.on_child_transition(&"Flee")
