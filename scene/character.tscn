@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://sfy34bkk0kbh" path="res://scene/ui/qte.tscn" id="9_qte"]
 [ext_resource type="Texture2D" uid="uid://dsui7588vnut4" path="res://assets/pointer.png" id="11_beyxi"]
 [ext_resource type="PackedScene" uid="uid://be6hg2sqy2uon" path="res://scene/bgm_player.tscn" id="12_x6pvx"]
-[ext_resource type="AudioStream" uid="uid://bgkmedalwf2bf" path="res://audio/bgm/glitchy/WAV_Quiet.wav" id="14_lp7ui"]
-[ext_resource type="AudioStream" uid="uid://coefbb55tasco" path="res://audio/bgm/horror/distant strange noises 1.wav" id="15_fk88t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t17xi"]
 size = Vector2(90, 71)
@@ -164,8 +162,6 @@ position = Vector2(12, -12)
 texture = ExtResource("11_beyxi")
 
 [node name="BgmPlayer" parent="." unique_id=1991467111 instance=ExtResource("12_x6pvx")]
-glitched_bgm = ExtResource("14_lp7ui")
-horror_bgm = ExtResource("15_fk88t")
 
 [node name="PlayerNoises" type="AudioStreamPlayer" parent="." unique_id=1463279914]
 volume_db = 5.0

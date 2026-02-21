@@ -11,10 +11,9 @@ class_name Character
 @onready var target_arrow: Sprite2D = $OrderUI/TargetArrow
 
 
-
 enum PlayerSoundTypes {Sound_DMG, Sound_DEATH, Sound_DARKNESS}
-@onready var audioPlayerSounds : AudioStreamPlayer = $PlayerNoises
-@onready var bgm_player : Bgm_player = $BgmPlayer
+@onready var audioPlayerSounds: AudioStreamPlayer = $PlayerNoises
+@onready var bgm_player: Bgm_player = $BgmPlayer
 
 @export var dict_sounds: Dictionary[PlayerSoundTypes, AudioStream]
 
@@ -105,10 +104,15 @@ func _unstable_damage(delta: float) -> void:
 func _damage_anim() -> void:
 	var tween: Tween = create_tween()
 	modulate = Color(1, 0.3, 0.3)
-	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	tween.tween_property(self , "modulate", Color.WHITE, 0.3)
 
 
 func _die() -> void:
+	qte._finish(true)
+	qte.qte_queue = []
+
+	umbral_layer.visible = false
+
 	bgm_player._on_toggleGlitched(true)
 	bgm_player._stop_main_track()
 	set_physics_process(false)
@@ -124,6 +128,7 @@ func _die() -> void:
 func _setup_umbral() -> void:
 	umbral_layer = CanvasLayer.new()
 	umbral_layer.layer = 1
+	umbral_layer.name = "umbral_layer"
 	add_child(umbral_layer)
 	var rect: ColorRect = ColorRect.new()
 	rect.anchor_right = 1.0
@@ -141,7 +146,7 @@ func _on_delivery_started(data: DeliveryData) -> void:
 	health = max_health
 	health_bar.init_health(max_health)
 	umbral_layer.visible = current_modifiers.has(Enums.PizzaModifier.UMBRAL)
-	if(umbral_layer.visible == true) :
+	if (umbral_layer.visible == true):
 		audioPlayerSounds.stream = dict_sounds[PlayerSoundTypes.Sound_DARKNESS]
 		audioPlayerSounds.play()
 		bgm_player._stop_main_track()
