@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://c4bvu8fbala1v" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
 [ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
 [ext_resource type="PackedScene" path="res://scene/ui/health_bar.tscn" id="7_hb"]
-[ext_resource type="PackedScene" path="res://scene/ui/death_screen.tscn" id="8_ds"]
+[ext_resource type="PackedScene" uid="uid://64dxvn1ek8h0" path="res://scene/ui/death_screen.tscn" id="8_ds"]
 [ext_resource type="PackedScene" uid="uid://sfy34bkk0kbh" path="res://scene/ui/qte.tscn" id="9_qte"]
 [ext_resource type="Texture2D" uid="uid://dsui7588vnut4" path="res://assets/pointer.png" id="11_beyxi"]
 [ext_resource type="PackedScene" uid="uid://be6hg2sqy2uon" path="res://scene/bgm_player.tscn" id="12_x6pvx"]
@@ -138,7 +138,8 @@ script = ExtResource("6_hidden")
 [node name="QTE" parent="CanvasLayer" unique_id=1000800055 instance=ExtResource("9_qte")]
 zone_size = 0.05
 
-[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 instance=ExtResource("8_ds")]
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 node_paths=PackedStringArray("character") instance=ExtResource("8_ds")]
+character = NodePath("../..")
 
 [node name="OrderUI" type="CanvasLayer" parent="." unique_id=1514529827]
 
