@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://q4t5c0fatjuy"]
 
 [ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_xaapt"]
+[ext_resource type="Texture2D" uid="uid://ct2m8f6xpbfk8" path="res://assets/world/basic/House_03.png" id="2_ga1p8"]
 
 [resource]
 script = ExtResource("1_xaapt")
@@ -10,4 +11,5 @@ Local cats are prowling around, they want that pizza! Protect it at all cost. Cl
 client = "Jack Soy"
 pizza_type = 2
 modifier = Array[int]([4])
+texture = ExtResource("2_ga1p8")
 metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

@@ -20,4 +20,6 @@ func interact():
 	var current_stage = WorldState.current_stage
 	if current_stage < all_deliveries.size():
 		var order = all_deliveries[current_stage]
+		player.health = 6.0
+		player.health_bar.update_health(player.health)
 		DeliveryManager.start_delivery(order) # This emits the signal
