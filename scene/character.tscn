@@ -145,7 +145,8 @@ script = ExtResource("6_hidden")
 [node name="QTE" parent="CanvasLayer" unique_id=1000800055 instance=ExtResource("9_qte")]
 zone_size = 0.05
 
-[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 instance=ExtResource("8_ds")]
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1916377431 node_paths=PackedStringArray("character") instance=ExtResource("8_ds")]
+character = NodePath("../..")
 
 [node name="OrderUI" type="CanvasLayer" parent="." unique_id=1514529827]
 
