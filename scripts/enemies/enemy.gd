@@ -45,11 +45,10 @@ func _on_detection_body_exited(body: Node) -> void:
 
 
 func _on_hurt_box_body_entered(body: Node) -> void:
+	if(cat_audio.size() > 0) : 
+		audioPlayer.pitch_scale += randf_range(-pitch_control, pitch_control)
+		audioPlayer.stream = cat_audio[randi_range(0, cat_audio.size() - 1)]
+		audioPlayer.play()
 	if body.is_in_group("character") and DeliveryManager.current_delivery != null:
-		if(cat_audio.size() > 0) : 
-			audioPlayer.pitch_scale += randf_range(-pitch_control, pitch_control)
-			audioPlayer.stream = cat_audio[randi_range(0, cat_audio.size() - 1)]
-			audioPlayer.play()
 		body.damage(damage)
-
 	state_machine.on_child_transition(&"Flee")

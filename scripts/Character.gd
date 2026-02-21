@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Character
 
 @export var speed: float = 450.0
-
 @onready var state_machine: StateMachine = $StateMachine
 @onready var interaction_area: Area2D = $Area2D
 @onready var interact_label: Label = $InteractLabel
@@ -10,6 +9,14 @@ class_name Character
 @onready var qte: QTEBar = $CanvasLayer/QTE
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var target_arrow: Sprite2D = $OrderUI/TargetArrow
+
+
+
+enum PlayerSoundTypes {Sound_DMG, Sound_DEATH, Sound_DARKNESS}
+@onready var audioPlayerSounds : AudioStreamPlayer = $PlayerNoises
+@onready var bgm_player : Bgm_player = $BgmPlayer
+
+@export var dict_sounds: Dictionary[PlayerSoundTypes, AudioStream]
 
 var is_hidden: bool = false
 var can_interact: bool = false
@@ -83,6 +90,8 @@ func _on_qte_finished(dodged: bool, amount: float) -> void:
 	health -= amount
 	health_bar.update_health(health)
 	_damage_anim()
+	audioPlayerSounds.stream = dict_sounds[PlayerSoundTypes.Sound_DMG]
+	audioPlayerSounds.play()
 	if health <= 0.0:
 		_die()
 
@@ -100,10 +109,14 @@ func _damage_anim() -> void:
 
 
 func _die() -> void:
+	bgm_player._on_toggleGlitched(true)
+	bgm_player._stop_main_track()
 	set_physics_process(false)
 	set_process(false)
 	set_process_unhandled_input(false)
 	velocity = Vector2.ZERO
+	audioPlayerSounds.stream = dict_sounds[PlayerSoundTypes.Sound_DEATH]
+	audioPlayerSounds.play()
 	var death_screen: Control = $CanvasLayer/DeathScreen
 	death_screen.show_screen()
 
@@ -128,10 +141,15 @@ func _on_delivery_started(data: DeliveryData) -> void:
 	health = max_health
 	health_bar.init_health(max_health)
 	umbral_layer.visible = current_modifiers.has(Enums.PizzaModifier.UMBRAL)
+	if(umbral_layer.visible == true) :
+		audioPlayerSounds.stream = dict_sounds[PlayerSoundTypes.Sound_DARKNESS]
+		audioPlayerSounds.play()
+		bgm_player._stop_main_track()
 	if current_modifiers.has(Enums.PizzaModifier.SUCCULENT):
 		succulent_timer = randf_range(5.0, 10.0)
 
 
 func _on_delivery_completed() -> void:
+	bgm_player._start_main_track()
 	current_modifiers.clear()
 	umbral_layer.visible = false

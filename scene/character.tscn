@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://ci634a81104i6"]
 
 [ext_resource type="Script" uid="uid://cpd6op4h6f642" path="res://scripts/Character.gd" id="1_char"]
+[ext_resource type="AudioStream" uid="uid://ch7iuvyun634v" path="res://audio/sfx/ui/Windows XP Hardware Fail.wav" id="2_lp7ui"]
 [ext_resource type="Script" uid="uid://q5e42d8wjrlw" path="res://scripts/StateMachine/StateMachine.gd" id="2_sm"]
 [ext_resource type="Texture2D" uid="uid://y4ihpdnkrrg1" path="res://assets/character/idle/Pizza guy Idle-sheet.png" id="2_t17xi"]
+[ext_resource type="AudioStream" uid="uid://dfvl4vt0xjvg1" path="res://audio/sfx/ui/Windows XP Critical Stop.wav" id="3_3fky7"]
 [ext_resource type="Texture2D" uid="uid://drf3tr15bkeqr" path="res://assets/character/run/Pizza guy Run-sheet.png" id="3_beyxi"]
 [ext_resource type="Script" uid="uid://bske0ia2j0v15" path="res://scripts/StateMachine/States/WalkState.gd" id="3_walk"]
+[ext_resource type="AudioStream" uid="uid://1xjdr6ridb6p" path="res://audio/sfx/horror/big distant thump 1.wav" id="4_5hcsl"]
 [ext_resource type="Script" uid="uid://c4bvu8fbala1v" path="res://scripts/StateMachine/States/IdleState.gd" id="4_idle"]
 [ext_resource type="Script" uid="uid://c0tkp4cstk5my" path="res://scripts/StateMachine/States/HiddenState.gd" id="6_hidden"]
 [ext_resource type="PackedScene" path="res://scene/ui/health_bar.tscn" id="7_hb"]
-[ext_resource type="PackedScene" path="res://scene/ui/death_screen.tscn" id="8_ds"]
+[ext_resource type="PackedScene" uid="uid://64dxvn1ek8h0" path="res://scene/ui/death_screen.tscn" id="8_ds"]
 [ext_resource type="PackedScene" uid="uid://sfy34bkk0kbh" path="res://scene/ui/qte.tscn" id="9_qte"]
 [ext_resource type="Texture2D" uid="uid://dsui7588vnut4" path="res://assets/pointer.png" id="11_beyxi"]
 [ext_resource type="PackedScene" uid="uid://be6hg2sqy2uon" path="res://scene/bgm_player.tscn" id="12_x6pvx"]
-[ext_resource type="AudioStream" uid="uid://rwarycj0pd0w" path="res://audio/bgm/normal/WAV_Cooking_Time!.wav" id="13_j6hc6"]
 [ext_resource type="AudioStream" uid="uid://bgkmedalwf2bf" path="res://audio/bgm/glitchy/WAV_Quiet.wav" id="14_lp7ui"]
 [ext_resource type="AudioStream" uid="uid://coefbb55tasco" path="res://audio/bgm/horror/distant strange noises 1.wav" id="15_fk88t"]
 
@@ -87,6 +89,11 @@ z_index = 5
 collision_mask = 4
 script = ExtResource("1_char")
 speed = 750.0
+dict_sounds = Dictionary[int, AudioStream]({
+0: ExtResource("2_lp7ui"),
+1: ExtResource("3_3fky7"),
+2: ExtResource("4_5hcsl")
+})
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042441642]
 position = Vector2(0, 98.5)
@@ -156,6 +163,9 @@ position = Vector2(12, -12)
 texture = ExtResource("11_beyxi")
 
 [node name="BgmPlayer" parent="." unique_id=1991467111 instance=ExtResource("12_x6pvx")]
-main_bgm = ExtResource("13_j6hc6")
 glitched_bgm = ExtResource("14_lp7ui")
 horror_bgm = ExtResource("15_fk88t")
+
+[node name="PlayerNoises" type="AudioStreamPlayer" parent="." unique_id=1463279914]
+volume_db = 5.0
+max_polyphony = 5

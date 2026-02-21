@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
 [ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/cat.tscn" id="5_c13q2"]
 [ext_resource type="Resource" uid="uid://q4t5c0fatjuy" path="res://resources/orders/2_tutorial_order_cats.tres" id="6_m43lc"]
-[ext_resource type="Script" uid="uid://c0844pyyf6ma" path="res://scripts/hazards/spawn_zone.gd" id="9_jt31o"]
+[ext_resource type="Script" uid="uid://bumgkhe6yuh3h" path="res://scripts/hazards/spawn_zone.gd" id="9_jt31o"]
 [ext_resource type="PackedScene" uid="uid://bckc1i78nakfr" path="res://scene/hazards/meteorite.tscn" id="10_qs8h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43lc"]
