@@ -29,7 +29,7 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 
 func add_qte_to_queue(damage_amount: float) -> void:
-	qte_queue.append(damage_amount * 2 if (owner as Character).current_modifier == Enums.PizzaModifier.FRAGILE else damage_amount)
+	qte_queue.append(damage_amount * 2 if (owner as Character).current_modifiers.has(Enums.PizzaModifier.FRAGILE) else damage_amount)
 
 	if (not active):
 		start_qte()

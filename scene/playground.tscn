@@ -8,9 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://de4w0b5fijltx" path="res://scene/delivery_zone.tscn" id="3_clejj"]
 [ext_resource type="PackedScene" uid="uid://w6n68w3omhrw" path="res://scene/enemies/cat.tscn" id="5_c13q2"]
 [ext_resource type="Resource" uid="uid://q4t5c0fatjuy" path="res://resources/orders/2_tutorial_order_cats.tres" id="6_m43lc"]
+[ext_resource type="Script" uid="uid://c0844pyyf6ma" path="res://scripts/hazards/spawn_zone.gd" id="9_jt31o"]
+[ext_resource type="PackedScene" uid="uid://bckc1i78nakfr" path="res://scene/hazards/meteorite.tscn" id="10_qs8h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43lc"]
 size = Vector2(721, 527)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs8h2"]
+size = Vector2(3090, 2585)
 
 [node name="Playground" type="Node2D" unique_id=1724821274]
 y_sort_enabled = true
@@ -81,3 +86,13 @@ max_speed = 300.0
 
 [node name="Cat3" parent="." unique_id=1405126069 instance=ExtResource("5_c13q2")]
 position = Vector2(1272, 252)
+
+[node name="MeteoriteSpawn" type="Area2D" parent="." unique_id=1677600424]
+script = ExtResource("9_jt31o")
+spawn_scene = ExtResource("10_qs8h2")
+spawn_interval = 0.1
+spawn_delay_variation = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeteoriteSpawn" unique_id=221049384]
+position = Vector2(3140, -409)
+shape = SubResource("RectangleShape2D_qs8h2")
