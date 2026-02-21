@@ -2,3 +2,4 @@ extends Node
 
 enum PizzaType {DIAVOLA, MARGHERITA, NEAPOLITAN, HAWAIIAN, NONE}
 enum PizzaModifier { FRAGILE, UNSTABLE, UMBRAL, SUCCULENT,  NORMAL }
+enum Biome { NORMAL, GLITCH, HELL }

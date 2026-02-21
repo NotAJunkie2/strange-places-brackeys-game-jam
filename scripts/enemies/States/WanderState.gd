@@ -21,7 +21,7 @@ func process_physics(delta: float) -> void:
 
 	enemy.linear_velocity = direction * enemy.speed
 
-	if enemy.target != null and not enemy.target.is_hidden:
+	if enemy.target != null and not enemy.target.is_hidden and DeliveryManager.current_delivery != null:
 		transition_sg.emit(&"Chase")
 
 

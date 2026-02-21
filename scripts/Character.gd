@@ -46,9 +46,7 @@ func damage(amount: float) -> void:
 	if is_hidden:
 		return
 
-	if current_modifier == Enums.PizzaModifier.FRAGILE:
-		amount *= 2.0
-	qte.start_qte(amount)
+	qte.add_qte_to_queue(amount)
 
 
 func _on_qte_finished(dodged: bool, amount: float) -> void:

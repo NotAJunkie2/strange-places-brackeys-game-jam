@@ -1,7 +1,9 @@
 extends Node
 
 enum DeliveryStage { TUTORIAL, TUTORIAL_2, GLITCH, GLITCH_2, HELL, HELL_2, FINAL_HQ }
-var current_stage = DeliveryStage.TUTORIAL
+var current_stage: DeliveryStage = DeliveryStage.TUTORIAL
+var attack_slot_occupied: bool = false
+var current_biome: Enums.Biome = Enums.Biome.NORMAL
 
 signal stage_completed
 
