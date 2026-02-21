@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bckc1i78nakfr"]
+
+[ext_resource type="Script" uid="uid://j0hobrgwhp4b" path="res://scripts/hazards/meteorite.gd" id="1_met"]
+[ext_resource type="Texture2D" uid="uid://c8cbsc7s8p367" path="res://assets/enemies/Cat_01_walk_sheet.png" id="2_e1on1"]
+
+[node name="Meteorite" type="Node2D" unique_id=1187119519]
+script = ExtResource("1_met")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=50571800]
+position = Vector2(4, -2)
+scale = Vector2(0.30555555, 1)
+texture = ExtResource("2_e1on1")
