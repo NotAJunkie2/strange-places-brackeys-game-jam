@@ -17,15 +17,22 @@ var current_interactible: GenericInteractible = null
 
 var health: float
 var max_health: float = 6.0
-var current_modifier: Enums.PizzaModifier = Enums.PizzaModifier.NORMAL
+var current_modifiers: Array[Enums.PizzaModifier] = []
 var current_target: Node2D
 var arrow_radius: float = 250.0
+
+var umbral_layer: CanvasLayer
+var umbral_material: ShaderMaterial
+var succulent_timer: float = 0.0
 
 
 func _ready() -> void:
 	health = max_health
 	health_bar.init_health(max_health)
 	qte.qte_finished.connect(_on_qte_finished)
+	DeliveryManager.delivery_started.connect(_on_delivery_started)
+	DeliveryManager.delivery_completed.connect(_on_delivery_completed)
+	_setup_umbral()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,23 +44,25 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	if current_modifier == Enums.PizzaModifier.UNSTABLE:
+	if current_modifiers.has(Enums.PizzaModifier.UNSTABLE):
 		_unstable_damage(delta)
+	if current_modifiers.has(Enums.PizzaModifier.SUCCULENT):
+		succulent_timer -= delta
+		if succulent_timer <= 0.0:
+			qte.add_qte_to_queue(1.0)
+			succulent_timer = randf_range(5.0, 10.0)
+	if umbral_layer.visible:
+		var screen_pos: Vector2 = get_global_transform_with_canvas().origin
+		umbral_material.set_shader_parameter("player_screen_pos", screen_pos)
 
 	if current_target and is_instance_valid(current_target):
-		$OrderUI.visible = true
-		# 1. Get direction in World Space
-		var direction = (current_target.global_position - global_position).normalized()
-		
-		# 2. Set LOCAL position (relative to the CanvasLayer/Screen Center)
-		# Get the center of the viewport so it orbits the middle of the screen
-		var screen_center = get_viewport_rect().size / 2
+		target_arrow.visible = true
+		var direction: Vector2 = (current_target.global_position - global_position).normalized()
+		var screen_center: Vector2 = get_viewport_rect().size / 2
 		target_arrow.global_position = screen_center + (direction * arrow_radius)
-		
-		# 3. Apply Rotation
 		target_arrow.rotation = direction.angle()
 	else:
-		$OrderUI.visible = false
+		target_arrow.visible = false
 
 
 func _physics_process(delta: float) -> void:
@@ -85,7 +94,7 @@ func _unstable_damage(delta: float) -> void:
 		_die()
 
 func _damage_anim() -> void:
-	var tween := create_tween()
+	var tween: Tween = create_tween()
 	modulate = Color(1, 0.3, 0.3)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
@@ -99,7 +108,30 @@ func _die() -> void:
 	death_screen.show_screen()
 
 
-func set_modifier(modifier: Enums.PizzaModifier) -> void:
-	current_modifier = modifier
+func _setup_umbral() -> void:
+	umbral_layer = CanvasLayer.new()
+	umbral_layer.layer = 1
+	add_child(umbral_layer)
+	var rect: ColorRect = ColorRect.new()
+	rect.anchor_right = 1.0
+	rect.anchor_bottom = 1.0
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	umbral_material = ShaderMaterial.new()
+	umbral_material.shader = preload("res://shaders/umbral.gdshader")
+	rect.material = umbral_material
+	umbral_layer.add_child(rect)
+	umbral_layer.visible = false
+
+
+func _on_delivery_started(data: DeliveryData) -> void:
+	current_modifiers = data.modifier.duplicate()
 	health = max_health
 	health_bar.init_health(max_health)
+	umbral_layer.visible = current_modifiers.has(Enums.PizzaModifier.UMBRAL)
+	if current_modifiers.has(Enums.PizzaModifier.SUCCULENT):
+		succulent_timer = randf_range(5.0, 10.0)
+
+
+func _on_delivery_completed() -> void:
+	current_modifiers.clear()
+	umbral_layer.visible = false
