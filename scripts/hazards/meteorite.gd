@@ -5,8 +5,11 @@ extends Node2D
 @export var impact_radius: float = 60.0
 @export var start_scale: float = 0.15
 @export var start_offset_y: float = -200.0
+@export var sound_pitch_control: float = 2.0
+
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var sprites: Array[CompressedTexture2D]
 
 var elapsed: float = 0.0
@@ -29,6 +32,8 @@ func _process(delta: float) -> void:
 	sprite.position.y = lerp(start_offset_y, 0.0, progress)
 
 	if elapsed >= warning_time and not has_impacted:
+		audioPlayer.pitch_scale += randf_range(-sound_pitch_control, sound_pitch_control)
+		audioPlayer.play()
 		_impact()
 
 

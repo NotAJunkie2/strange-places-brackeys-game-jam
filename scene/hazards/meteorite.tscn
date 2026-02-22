@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cth2clgvhn8ip" path="res://assets/world/glitch/King_Black.png" id="5_lvqfh"]
 [ext_resource type="Texture2D" uid="uid://c1c8ckmvf6iu2" path="res://assets/world/glitch/Pawn.png" id="6_t8bk6"]
 [ext_resource type="Texture2D" uid="uid://dfdx6nqsn7bxy" path="res://assets/world/glitch/Pawn_Black.png" id="7_cjurf"]
+[ext_resource type="AudioStream" uid="uid://bhh2vlvysj2e2" path="res://audio/sfx/deltarune-explosion.mp3" id="8_tfuxg"]
 
 [node name="Meteorite" type="Node2D" unique_id=1187119519]
 script = ExtResource("1_met")
@@ -21,3 +22,8 @@ sprites = Array[CompressedTexture2D]([ExtResource("2_tfuxg"), ExtResource("3_0it
 position = Vector2(4, -161)
 scale = Vector2(0.30555555, 1)
 texture = ExtResource("2_tfuxg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=581077942]
+stream = ExtResource("8_tfuxg")
+volume_db = -5.0
+max_distance = 1000.0
