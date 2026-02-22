@@ -1,11 +1,17 @@
 [gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://djmox45in0ywx"]
 
 [ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_ee4uf"]
+[ext_resource type="Texture2D" uid="uid://c1c8ckmvf6iu2" path="res://assets/world/glitch/Pawn.png" id="2_pawn"]
 
 [resource]
 script = ExtResource("1_ee4uf")
-address = "404 N0t_Found $t"
-briefing = "Reality is thin there, and so IS OUR DELICIOUS PIZZA CRUST! Don't disappoint us, Delivery Boy..."
+address = "7 Corrupted Ave."
+briefing = "Things are getting strange out here, Delivery Boy.
+
+The sky flickers and something is falling from above. First time in the Glitch zone. Keep your head down.
+
+User_404 doesn't care. He just wants his pizza."
 client = "User_404"
-modifier = Array[int]([1])
+modifier = Array[int]([0])
+texture = ExtResource("2_pawn")
 metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

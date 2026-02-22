@@ -46,7 +46,7 @@ func _on_delivery_started(started_data: DeliveryData):
 
 func _on_delivery_completed():
 	_set_active_state(false)
-	character.interact_label.text = "Order delivered to " + delivery_order.client
+	character.interact_label.text = "Order delivered!"
 	character.current_target = owner.find_child("PizzaPlace")
 
 func _set_active_state(state: bool):

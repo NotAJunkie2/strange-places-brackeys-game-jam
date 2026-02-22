@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://bckc1i78nakfr"]
 
-[ext_resource type="Script" uid="uid://j0hobrgwhp4b" path="res://scripts/hazards/meteorite.gd" id="1_met"]
-[ext_resource type="Texture2D" uid="uid://c8cbsc7s8p367" path="res://assets/enemies/Cat_01_walk_sheet.png" id="2_e1on1"]
+[ext_resource type="Script" uid="uid://twx6wbcaekc0" path="res://scripts/hazards/meteorite.gd" id="1_met"]
+[ext_resource type="Texture2D" uid="uid://h0nue17y1erx" path="res://assets/world/glitch/Horse.png" id="2_tfuxg"]
+[ext_resource type="Texture2D" uid="uid://boeupgkvb14lr" path="res://assets/world/glitch/Horse_Black.png" id="3_0it7c"]
+[ext_resource type="Texture2D" uid="uid://efkd71a0i5ko" path="res://assets/world/glitch/King.png" id="4_t4w3h"]
+[ext_resource type="Texture2D" uid="uid://cth2clgvhn8ip" path="res://assets/world/glitch/King_Black.png" id="5_lvqfh"]
+[ext_resource type="Texture2D" uid="uid://c1c8ckmvf6iu2" path="res://assets/world/glitch/Pawn.png" id="6_t8bk6"]
+[ext_resource type="Texture2D" uid="uid://dfdx6nqsn7bxy" path="res://assets/world/glitch/Pawn_Black.png" id="7_cjurf"]
 
 [node name="Meteorite" type="Node2D" unique_id=1187119519]
 script = ExtResource("1_met")
+damage = 2.0
+warning_time = 0.5
+impact_radius = 200.0
+start_scale = 0.45
+start_offset_y = -800.0
+sprites = Array[CompressedTexture2D]([ExtResource("2_tfuxg"), ExtResource("3_0it7c"), ExtResource("4_t4w3h"), ExtResource("5_lvqfh"), ExtResource("6_t8bk6"), ExtResource("7_cjurf")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=50571800]
-position = Vector2(4, -2)
+position = Vector2(4, -161)
 scale = Vector2(0.30555555, 1)
-texture = ExtResource("2_e1on1")
+texture = ExtResource("2_tfuxg")

@@ -29,9 +29,14 @@
 [ext_resource type="Texture2D" uid="uid://dlxtrn3umrhjs" path="res://assets/world/basic/Flowers/Flower_05.png" id="26_moc21"]
 [ext_resource type="Texture2D" uid="uid://q5rfnip7tik8" path="res://assets/world/basic/Flowers/Flower_06.png" id="27_6dcah"]
 [ext_resource type="Texture2D" uid="uid://kfxpu8jawkrr" path="res://assets/world/basic/Flowers/Flower_07.png" id="28_0i6en"]
+[ext_resource type="Resource" uid="uid://dunogcppjq0s" path="res://resources/orders/5_hell_order_dark.tres" id="28_nvx6w"]
 [ext_resource type="Texture2D" uid="uid://cixmwm13kp2oe" path="res://assets/world/basic/Flowers/Flower_08.png" id="29_el0c7"]
+[ext_resource type="Resource" uid="uid://djmox45in0ywx" path="res://resources/orders/3_glitch_order.tres" id="29_utqgq"]
 [ext_resource type="Texture2D" uid="uid://b5efewbla8bsy" path="res://assets/world/basic/Bushes/Bush_07.png" id="30_f30y1"]
+[ext_resource type="Resource" uid="uid://2twkn17he00k" path="res://resources/orders/4_glitch_order_stalkers.tres" id="31_0i6en"]
 [ext_resource type="Texture2D" uid="uid://dx05kd5yg5mto" path="res://assets/world/basic/Bushes/Bush_06.png" id="31_b3k5s"]
+[ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="32_el0c7"]
+[ext_resource type="Resource" uid="uid://146wqeedlnxn" path="res://resources/orders/1_tutorial_order.tres" id="33_f30y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a330a"]
 size = Vector2(120.73682, 93.33179)
@@ -42,11 +47,23 @@ size = Vector2(105.88818, 98.12317)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7asn"]
 size = Vector2(189.17566, 135.30032)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m43lc"]
-size = Vector2(747, 474)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utqgq"]
+size = Vector2(928, 525)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moc21"]
+size = Vector2(711, 539)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el0c7"]
+size = Vector2(264, 310.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dcah"]
+size = Vector2(560, 491)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f30y1"]
+size = Vector2(289, 452)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvx6w"]
-size = Vector2(5874, 2982)
+size = Vector2(3730, 2982)
 
 [node name="Playground" type="Node2D" unique_id=1724821274]
 y_sort_enabled = true
@@ -58,7 +75,7 @@ collision_mask = 3
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1141654554]
 position = Vector2(-1648, 806)
 build_mode = 1
-polygon = PackedVector2Array(2, 8, -139, -341, -108, -532, -130, -955, -287, -1525, 24, -1888, 1032, -2002, 1605, -2554, 1988, -2502, 3666, -2451, 3776, -2554, 5040, -2537, 5458, -2268, 5685, -2181, 6262, -2047, 6285, 103, 6518, 676, 7216, 971, 7494, 1759, 7727, 2977, 6795, 2923, 6580, 2699, 5819, 2699, 5112, 3022, 4010, 3075, 3231, 2708, 2435, 3040, 1897, 1965, 1819, 35, 1173, 21, 504, 28)
+polygon = PackedVector2Array(2, 8, -139, -341, -108, -532, -130, -955, -287, -1525, 24, -1888, 1032, -2002, 1605, -2554, 1988, -2502, 3666, -2451, 3776, -2554, 5040, -2537, 5458, -2268, 5685, -2181, 6262, -2047, 6220, -152, 5964, -92, 5225, -112, 4309, -4, 3482, -132, 3009, -4, 2184, -85, 1819, 35, 1173, 21, 504, 28)
 one_way_collision_margin = 2.0
 
 [node name="NormalBiome" type="Area2D" parent="." unique_id=829300439]
@@ -69,6 +86,12 @@ metadata/_custom_type_script = "uid://b8dshfx3yo3m6"
 [node name="Sprite2D" type="Sprite2D" parent="NormalBiome" unique_id=1293380353]
 position = Vector2(1372, -451)
 texture = ExtResource("2_m43lc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="NormalBiome" unique_id=700495185]
+position = Vector2(2511.0002, -420)
+rotation = -3.1415927
+scale = Vector2(0.7234616, 0.78026456)
+texture = ExtResource("3_nvx6w")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NormalBiome" unique_id=2089484290]
 position = Vector2(-1648, 806)
@@ -399,22 +422,6 @@ position = Vector2(714, 721)
 texture = ExtResource("28_0i6en")
 centered = false
 
-[node name="GlitchBiome" type="Area2D" parent="." unique_id=509115829]
-z_index = -1
-position = Vector2(2766, 3439)
-rotation = -6.2831855
-script = ExtResource("1_nq230")
-biome_type = 1
-metadata/_custom_type_script = "uid://b8dshfx3yo3m6"
-
-[node name="Sprite2D" type="Sprite2D" parent="GlitchBiome" unique_id=204155115]
-position = Vector2(559.0001, -1306.9999)
-texture = ExtResource("3_nvx6w")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GlitchBiome" unique_id=464369858]
-position = Vector2(-2089, -121.00037)
-polygon = PackedVector2Array(-331, -220, -381, -1199, -392, -2416, 1065, -2511, 2081.0005, -2611.9995, 3825.0005, -2479.9993, 4126, -1824.9991, 4860, -1535.999, 5424, 443.00098, 4506, 391.00098, 4297, 194.00098, 3445, 128.00073, 2920, 430.00073, 1713.9999, 574.0005, 849, 128.00024, 166.99994, 496.00024)
-
 [node name="Character" parent="." unique_id=1399939567 instance=ExtResource("1_char")]
 z_index = 0
 z_as_relative = false
@@ -427,28 +434,71 @@ position = Vector2(200, 0)
 [node name="DeliveryZone_Chill Joe" parent="." unique_id=1471768026 instance=ExtResource("3_clejj")]
 position = Vector2(1383, -1612)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Chill Joe" unique_id=1044203725]
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Chill Joe" unique_id=733018723]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Chill Joe/StaticBody2D" unique_id=47188262]
-position = Vector2(41.5, 277)
-shape = SubResource("RectangleShape2D_m43lc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Chill Joe/StaticBody2D" unique_id=923407948]
+position = Vector2(15, 252.5)
+shape = SubResource("RectangleShape2D_utqgq")
 
-[node name="DeliveryZone_Jack Soy" parent="." unique_id=1046043506 instance=ExtResource("3_clejj")]
-position = Vector2(370, 150)
+[node name="DeliveryZone_Jack Soy" parent="." unique_id=1816683755 instance=ExtResource("3_clejj")]
+position = Vector2(3256, -1588)
 delivery_order = ExtResource("6_m43lc")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Jack Soy" unique_id=1244121439]
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Jack Soy" unique_id=1632990052]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Jack Soy/StaticBody2D" unique_id=1378483640]
-position = Vector2(-11.5, 253.5)
-shape = SubResource("RectangleShape2D_m43lc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Jack Soy/StaticBody2D" unique_id=1243687433]
+position = Vector2(2.5, 259.5)
+shape = SubResource("RectangleShape2D_moc21")
+
+[node name="DeliveryZone_User_404" parent="." unique_id=1046043506 instance=ExtResource("3_clejj")]
+position = Vector2(370, 150)
+delivery_order = ExtResource("29_utqgq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_User_404" unique_id=4596167]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_User_404/StaticBody2D" unique_id=1206739042]
+position = Vector2(4, 149.75)
+shape = SubResource("RectangleShape2D_el0c7")
+
+[node name="DeliveryZone_Glitcher 217" parent="." unique_id=975254059 instance=ExtResource("3_clejj")]
+position = Vector2(3881, 144)
+delivery_order = ExtResource("31_0i6en")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Glitcher 217" unique_id=1298595582]
+collision_layer = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeliveryZone_Glitcher 217/StaticBody2D" unique_id=1989855610]
+position = Vector2(0, 235.5)
+shape = SubResource("RectangleShape2D_6dcah")
+
+[node name="DeliveryZone_Proto_77" parent="." unique_id=2141256750 instance=ExtResource("3_clejj")]
+position = Vector2(2318, -52)
+delivery_order = ExtResource("28_nvx6w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeliveryZone_Proto_77" unique_id=1789685417]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryZone_Proto_77/StaticBody2D" unique_id=672187677]
+position = Vector2(4.5, 216)
+shape = SubResource("RectangleShape2D_f30y1")
 
 [node name="PizzaPlace" parent="." unique_id=1602411763 groups=["pizza_place"] instance=ExtResource("3_2ob5w")]
 position = Vector2(-901, -486)
+all_deliveries = Array[ExtResource("32_el0c7")]([ExtResource("33_f30y1"), ExtResource("6_m43lc"), ExtResource("29_utqgq"), ExtResource("31_0i6en"), ExtResource("28_nvx6w")])
 
-[node name="Cat6" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
+[node name="Cat9" parent="." unique_id=329662660 instance=ExtResource("5_c13q2")]
+position = Vector2(61, -158)
+
+[node name="Cat8" parent="." unique_id=39116656 instance=ExtResource("5_c13q2")]
+position = Vector2(1829, -811)
+
+[node name="Cat7" parent="." unique_id=370268891 instance=ExtResource("5_c13q2")]
+position = Vector2(948, -768)
+
+[node name="Cat6" parent="." unique_id=431394334 instance=ExtResource("5_c13q2")]
 position = Vector2(3549, -497)
 
 [node name="Cat2" parent="." unique_id=368226396 instance=ExtResource("5_c13q2")]
@@ -473,12 +523,12 @@ max_speed = 300.0
 position = Vector2(1221, 156)
 
 [node name="MeteoriteSpawn" type="Area2D" parent="." unique_id=1677600424]
-position = Vector2(794, 3469)
+position = Vector2(448, 916)
 script = ExtResource("9_jt31o")
 spawn_scene = ExtResource("10_qs8h2")
 spawn_interval = 0.1
 spawn_delay_variation = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeteoriteSpawn" unique_id=658029964]
-position = Vector2(2386, -1165)
+position = Vector2(2635, -1415)
 shape = SubResource("RectangleShape2D_nvx6w")

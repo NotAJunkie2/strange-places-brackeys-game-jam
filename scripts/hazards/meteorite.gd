@@ -7,6 +7,7 @@ extends Node2D
 @export var start_offset_y: float = -200.0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@export var sprites: Array[CompressedTexture2D]
 
 var elapsed: float = 0.0
 var has_impacted: bool = false
@@ -15,6 +16,7 @@ var has_impacted: bool = false
 func _ready() -> void:
 	sprite.scale = Vector2(start_scale, start_scale)
 	sprite.position.y = start_offset_y
+	sprite.texture = sprites.pick_random()
 
 
 func _process(delta: float) -> void:
@@ -42,7 +44,7 @@ func _impact() -> void:
 	var results: Array[Dictionary] = space.intersect_shape(query)
 	for result: Dictionary in results:
 		var body: Node = result["collider"] as Node
-		if body != null and body.is_in_group("character"):
+		if body != null and body.is_in_group("character") and DeliveryManager.current_delivery != null:
 			body.damage(damage)
 	var tween: Tween = create_tween()
 	tween.tween_interval(0.3)

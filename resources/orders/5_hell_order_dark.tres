@@ -1,14 +1,18 @@
 [gd_resource type="Resource" script_class="DeliveryData" format=3 uid="uid://dunogcppjq0s"]
 
 [ext_resource type="Script" uid="uid://bl7v0y0xka8dl" path="res://scripts/delivery_data.gd" id="1_wtdg3"]
+[ext_resource type="Texture2D" uid="uid://efkd71a0i5ko" path="res://assets/world/glitch/King.png" id="2_king"]
 
 [resource]
 script = ExtResource("1_wtdg3")
-address = "Magma Falls"
-briefing = "Visibility is zero. Careful, we they say there's  a risk of rain there...
+address = "NULL_BLOCK_05"
+briefing = "Deeper in the Glitch now. Meteorites are coming down harder and faster.
 
-Can it REALLY rain in hell though?"
-client = "Beelzebub"
-pizza_type = 1
-modifier = Array[int]([2])
+The pizza is UNSTABLE — every hit shakes it. One wrong move and the whole delivery falls apart.
+
+Proto_77 is waiting. Don't keep it waiting long."
+client = "Proto_77"
+pizza_type = 2
+modifier = Array[int]([1, 0])
+texture = ExtResource("2_king")
 metadata/_custom_type_script = "uid://bl7v0y0xka8dl"

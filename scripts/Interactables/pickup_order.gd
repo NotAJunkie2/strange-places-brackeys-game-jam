@@ -1,14 +1,14 @@
 extends GenericInteractible
 
 @export var all_deliveries: Array[DeliveryData]
-@onready var audioPlayer : AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audioPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	super()
-	if WorldState.current_stage != WorldState.DeliveryStage.FINAL_HQ:
+	super ()
+	if WorldState.current_stage != WorldState.DeliveryStage.DELIVERY_5:
 		label_on_enter = "Press E to pickup the next order"
-	pass
-
+	else:
+		label_on_enter = "Good job! You finished the game. Press E to go to main menu!"
 
 func interact():
 	if not player:
@@ -25,3 +25,6 @@ func interact():
 		player.health_bar.update_health(player.health)
 		audioPlayer.play()
 		DeliveryManager.start_delivery(order) # This emits the signal
+	else:
+		print("Game done!")
+		get_tree().change_scene_to_file("res://scene/main_menu.tscn")

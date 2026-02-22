@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
-@export var speed: float = 450.0
+@export var speed: float = 200.0
 @onready var state_machine: StateMachine = $StateMachine
 @onready var interaction_area: Area2D = $Area2D
 @onready var interact_label: Label = $InteractLabel
@@ -108,8 +108,8 @@ func _damage_anim() -> void:
 
 
 func _die() -> void:
-	qte._finish(true)
 	qte.qte_queue = []
+	qte._finish(true)
 
 	umbral_layer.visible = false
 
